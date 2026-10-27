@@ -1,25 +1,22 @@
 "use client";
 
-import Image from "next/image";
-import CTAButton from "./CTAButton";
+import { Cormorant_Garamond } from "next/font/google";
 import Modal from "./Modal";
 import ContactForm from "./ContactForm";
 import { useState } from "react";
-import NavLink from "./NavLink";
+
+// Misma cursiva que usa Moto para "The standard"
+const cormorant = Cormorant_Garamond({
+	subsets: ["latin"],
+	weight: ["500"],
+	style: ["italic"],
+});
 
 export default function Hero() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleClick = () => {
 		setIsModalOpen(true);
-	};
-
-	const heroWordClass =
-		"font-[almaq] leading-none stroke-heavy text-transparent bg-clip-text drop-shadow-[4px_4px_0_#111]";
-	const heroWordStyle = {
-		backgroundImage: `url('/beige-texture.webp')`,
-		backgroundSize: "cover",
-		backgroundRepeat: "no-repeat",
 	};
 
 	return (
@@ -33,79 +30,52 @@ export default function Hero() {
 				className="absolute top-0 left-0 w-full h-full object-cover z-0"
 			/>
 
-			{/* Overlay for contrast */}
-			<div className="absolute inset-0 bg-[#172E6E]/60 z-0" />
+			{/* Overlay neutro (sin tinte azul): oscuro a la izquierda y abajo para que el texto respire */}
+			<div
+				aria-hidden="true"
+				className="absolute inset-0 z-0 bg-gradient-to-r from-[#111111]/75 via-[#111111]/35 to-transparent"
+			/>
+			<div
+				aria-hidden="true"
+				className="absolute inset-0 z-0 bg-gradient-to-t from-[#111111]/70 via-transparent to-transparent"
+			/>
 
-			{/* Top-left desktop nav links */}
-			<div className="hidden md:block absolute top-40 left-20 z-20">
-				<div className="hidden md:flex flex-col gap-0 items-center">
-					<NavLink href="/rescate">
-						<p className={`${heroWordClass} text-[60px]`} style={heroWordStyle}>
-							RESCATE
+			{/* Hero content: centrado vertical, alineado a la izquierda (estilo Moto) */}
+			<div className="relative z-10 w-full max-w-[1440px] mx-auto h-full px-6 sm:px-10 lg:px-20 flex items-center pt-24">
+				<div className="max-w-3xl">
+					{/* Eyebrow */}
+					<div className="flex items-center gap-3 mb-8">
+						<span aria-hidden="true" className="block w-10 h-px bg-[#C9A961]" />
+						<p className="font-[almaq] text-[#C9A961] text-xs sm:text-sm font-bold tracking-[0.35em] uppercase">
+							Est. 2021 &middot; CDMX, México
 						</p>
-					</NavLink>
-
-					<NavLink href="/proteccion-personal">
-						<p className={`${heroWordClass} text-[3vw]`} style={heroWordStyle}>
-							PROTECCIÓN PERSONAL
-						</p>
-					</NavLink>
-
-					<NavLink href="/hazmat">
-						<p className={`${heroWordClass} text-[60px]`} style={heroWordStyle}>
-							HAZMAT
-						</p>
-					</NavLink>
-				</div>
-			</div>
-
-			{/* Hero content */}
-		<div className="relative z-10 flex flex-col items-center justify-center h-full px-4 pt-24">
-			{/* Logo */}
-			<div className="mb-4">
-				<Image
-					src="/LP-escudos/escudo_color.webp"
-					alt="Lhopital-FR logo"
-					width={250}
-					height={250}
-					unoptimized
-				/>
-			</div>
-
-            {/* Mobile nav links */}
-				<div className="md:hidden -mt-20 -mb-16 w-96 h-56 flex items-center justify-center">
-					<div className="flex items-center justify-center gap-1 text-center">
-						<NavLink href="/rescate">
-							<p
-								className={`${heroWordClass} text-[8vw]`}
-								style={heroWordStyle}
-							>
-								RESCATE
-							</p>
-						</NavLink>
-						<NavLink href="/proteccion-personal">
-							<p
-								className={`${heroWordClass} text-[6vw]`}
-								style={heroWordStyle}
-							>
-								PROTECCIÓN PERSONAL
-							</p>
-						</NavLink>
-						<NavLink href="/hazmat">
-							<p
-								className={`${heroWordClass} text-[8vw]`}
-								style={heroWordStyle}
-							>
-								HAZMAT
-							</p>
-						</NavLink>
 					</div>
-				</div>
 
-				{/* CTA Button */}
-				<CTAButton onClick={handleClick} hovered>
-					CONTÁCTANOS
-				</CTAButton>
+					{/* Título */}
+					<h1 className="font-[rider] text-[#F4F1EC] leading-[0.85] tracking-tight mb-6">
+						<span className="block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-extrabold uppercase">
+							We are
+						</span>
+						<span
+							className={`${cormorant.className} block italic font-medium text-[#C9A961] text-5xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-wide mt-1`}
+						>
+							The Standard
+						</span>
+					</h1>
+
+					{/* Subtítulo */}
+					<p className="font-[almaq] text-[#F4F1EC]/70 text-sm sm:text-base font-semibold tracking-[0.3em] uppercase mb-10">
+						Fire &amp; Rescue
+					</p>
+
+					{/* CTA */}
+					<button
+						onClick={handleClick}
+						className="bg-[#F4F1EC] text-[#111111] px-7 py-3 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase hover:bg-[#C9A961] transition-colors duration-300"
+					>
+						Contáctanos
+					</button>
+				</div>
 			</div>
 
 			<Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
