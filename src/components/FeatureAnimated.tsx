@@ -59,7 +59,8 @@ export default function FeatureAnimated({
 						isLeft ? "md:-ml-20 md:order-2" : "md:-mr-20 md:order-1"
 					}`}
 				>
-					<h3 className="text-2xl md:text-3xl font-bold text-red-600 mb-4">
+					<span aria-hidden="true" className="block w-10 h-0.5 bg-[#B01F29] mb-4" />
+					<h3 className="text-2xl md:text-3xl font-bold text-[#111111] mb-4">
 						{title}
 					</h3>
 					<p className="text-base md:text-lg text-[#333] font-light leading-relaxed">

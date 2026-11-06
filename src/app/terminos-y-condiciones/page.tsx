@@ -6,7 +6,7 @@ export default function TerminosYCondiciones() {
 			<div className="md:h-24 h-32 bg-black w-full" />
 
 			<section className="max-w-4xl mx-auto px-6 py-20 text-sm md:text-base leading-relaxed">
-				<h1 className="text-3xl font-bold mb-8 text-[#b01f29]">
+				<h1 className="text-3xl font-bold mb-8 text-[#111111]">
 					Términos y Condiciones
 				</h1>
 
@@ -110,7 +110,7 @@ export default function TerminosYCondiciones() {
 					},
 				].map((section, idx) => (
 					<section key={idx} className="mb-6">
-						<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+						<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 							{section.title}
 						</h2>
 						{section.content.map((paragraph, pIdx) => (

@@ -34,7 +34,7 @@ export default function Ventilacion() {
 			</HeroContainer>
 
 			<section className="w-full bg-white py-20 px-6 md:px-20">
-				<h1 className="text-3xl md:text-5xl text-red-600 font-bold text-center mb-10">
+				<h1 className="text-3xl md:text-5xl text-[#111111] font-bold text-center mb-10">
 					EQUIPOS DE VENTILACIÓN ESPECIALIZADOS EN:
 				</h1>
 				<FeatureAnimated
@@ -58,12 +58,12 @@ export default function Ventilacion() {
 
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
-					<p className="text-lg md:text-xl leading-relaxed mb-8 text-justify">
+					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
 						contactando a nuestros especialistas que con gusto atenderán su
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)} hovered>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
 						CONTÁCTANOS
 					</CTAButton>
 				</div>

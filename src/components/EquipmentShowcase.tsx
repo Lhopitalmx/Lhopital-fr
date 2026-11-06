@@ -65,7 +65,7 @@ export default function EquipmentShowcase(): JSX.Element {
 				unoptimized
 				className="object-cover"
 			/>
-			<div className="absolute inset-0 bg-[#b01f29]/70" />
+			<div className="absolute inset-0 bg-[#111111]/75" />
 		</div>			{/* Section Title */}
 			<motion.div
 				ref={sectionRef}
@@ -164,7 +164,7 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 					</div>
 
 					{/* CTA Button */}
-					<div className="bg-[#b01f29] text-white text-center py-4 text-lg font-bold tracking-wide">
+					<div className="bg-[#111111] border-t-2 border-[#B01F29] text-[#F4F1EC] text-center py-4 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group-hover:bg-[#B01F29]">
 						{item.url ? (
 							<span className="flex items-center justify-center gap-2">
 								<span className="text-2xl">+</span> VER MÁS
@@ -190,7 +190,7 @@ function CardWrapper({
 	onMouseEnter: () => void;
 	onMouseLeave: () => void;
 }) {
-	const props = { className: "block w-full h-full", onMouseEnter, onMouseLeave };
+	const props = { className: "group block w-full h-full", onMouseEnter, onMouseLeave };
 	return url ? (
 		<Link href={url} {...props}>
 			{children}

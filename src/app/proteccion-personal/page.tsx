@@ -67,7 +67,7 @@ export default function PersonalProtection() {
 				alt="Protección Personal item"
 				// catalogOption={catalogOptions}
 			/>
-			<section className="w-full bg-white text-red-600 py-20 px-6 md:px-20 ">
+			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
 				<h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS DE PROTECCIÓN PERSONAL ESPECIALIZADOS EN:
 				</h1>
@@ -94,12 +94,12 @@ export default function PersonalProtection() {
 			</section>
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
-					<p className="text-lg md:text-xl leading-relaxed mb-8 text-justify">
+					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
 						contactando a nuestros especialistas que con gusto atenderán su
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)} hovered>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
 						CONTÁCTANOS
 					</CTAButton>
 				</div>

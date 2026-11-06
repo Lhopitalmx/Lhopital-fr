@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 					`}
 				</Script>
 			</head>
-			<body className="flex flex-col bg-white font-[almaq] text-white text-justify">
+			<body className="flex flex-col bg-white font-[almaq] text-white">
 				<LocalBusinessSchema />
 				<Header />
 				<main className="min-h-screen flex-1">{children}</main>
