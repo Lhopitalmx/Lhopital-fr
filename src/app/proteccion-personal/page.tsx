@@ -37,7 +37,8 @@ export default function PersonalProtection() {
 		<>
 			<HeroContainer
 				title="Protección Personal"
-				imageSrc={cld("proteccion-personal", "c_crop,g_north_west,x_900,y_0,w_5820,h_4480/c_limit,w_2400")}
+				imageSrc={cld("proteccion-personal1", "c_limit,w_2400")}
+				imagePosition="object-[20%_0%]"
 			>
 				<p className="text-lg md:text-2xl font-light max-w-xl">
 					El equipo de protección personal es la parte más importante para

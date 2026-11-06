@@ -5,12 +5,15 @@ type HeroContainerProps = {
 	title: string;
 	// Sin imagen queda el fondo oscuro liso.
 	imageSrc?: string;
+	// Qué parte de la foto se conserva al recortarla (clase de Tailwind, p. ej. "object-top").
+	imagePosition?: string;
 	children?: ReactNode;
 };
 
 export default function HeroContainer({
 	title,
 	imageSrc,
+	imagePosition = "object-center",
 	children,
 }: HeroContainerProps) {
 	return (
@@ -23,7 +26,7 @@ export default function HeroContainer({
 						alt={title}
 						fill
 						unoptimized
-						className="object-cover w-full h-full"
+						className={`object-cover w-full h-full ${imagePosition}`}
 					/>
 				</div>
 			)}
