@@ -11,6 +11,10 @@ interface FeatureAnimatedProps {
 	// Sin imagen se muestra un recuadro gris del mismo tamaño.
 	imageSrc?: string;
 	alt?: string;
+	// Marco cuadrado para que todas las fotos de una sección midan lo mismo.
+	square?: boolean;
+	// Qué parte de la foto se conserva al recortarla (clase de Tailwind, p. ej. "object-[60%_50%]").
+	imagePosition?: string;
 }
 
 export default function FeatureAnimated({
@@ -19,6 +23,8 @@ export default function FeatureAnimated({
 	description,
 	imageSrc,
 	alt = "",
+	square = false,
+	imagePosition = "object-center",
 }: FeatureAnimatedProps) {
 	const isLeft = direction === "left";
 
@@ -42,10 +48,15 @@ export default function FeatureAnimated({
 							width={800}
 							height={600}
 							unoptimized
-							className="w-full h-auto object-cover max-w-full"
+							className={`w-full max-w-full object-cover ${
+								square ? "aspect-square" : "h-auto"
+							} ${imagePosition}`}
 						/>
 					) : (
-						<div className="w-full aspect-[4/3] bg-neutral-200" aria-hidden="true" />
+						<div
+							className={`w-full bg-neutral-200 ${square ? "aspect-square" : "aspect-[4/3]"}`}
+							aria-hidden="true"
+						/>
 					)}
 				</motion.div>
 
