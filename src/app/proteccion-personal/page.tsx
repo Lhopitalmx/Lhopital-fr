@@ -65,7 +65,7 @@ export default function PersonalProtection() {
 			<FeatureIntro
 				title="Todos nuestros equipos cuentan con certificación NFPA "
 				subtitle="(National Fire Protection Association), garantizando la seguridad y calidad de los equipos."
-				imageSrc="/items/pp1.webp"
+				imageSrc={cld("pp1", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
 				alt="Protección Personal item"
 				// catalogOption={catalogOptions}
 			/>
@@ -77,21 +77,21 @@ export default function PersonalProtection() {
 					direction="left"
 					title="EPP LION®"
 					description="Líder mundial en equipos de protección personal para bomberos y rescatistas profesionales con certificación NFPA y EN."
-					imageSrc="/features/proteccion1.webp"
+					imageSrc={cld("proteccion1v", "c_limit,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="right"
 					title="EPP HexArmor®"
 					description="Los mejores guantes para rescate técnico."
-					imageSrc="/features/proteccion2.webp"
+					imageSrc={cld("proteccion2h", "c_pad,ar_3:2,b_white,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="left"
 					title="Equipos personalizados"
 					description="desarrollados y fabricados de acuerdo a las necesidades específicas de los cuerpos de rescate y emergencias"
-					imageSrc="/features/proteccion3.webp"
+					imageSrc={cld("proteccion3", "c_crop,g_north_west,x_0,y_380,w_3280,h_2460/c_limit,w_1200")}
 				/>
 			</section>
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
