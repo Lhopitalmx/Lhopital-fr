@@ -8,6 +8,7 @@ import FeatureIntro from "@/components/FeatureIntro";
 import HeroContainer from "@/components/HeroContainer";
 import Modal from "@/components/Modal";
 import { useState } from "react";
+import { cld } from "@/lib/cloudinary";
 
 const brandLogos = [
 	{
@@ -36,7 +37,7 @@ export default function PersonalProtection() {
 		<>
 			<HeroContainer
 				title="Protección Personal"
-				imageSrc="/banners/proteccion-personal.webp"
+				imageSrc={cld("proteccion-personal", "c_crop,g_north_west,x_900,y_0,w_5820,h_4480/c_limit,w_2400")}
 			>
 				<p className="text-lg md:text-2xl font-light max-w-xl">
 					El equipo de protección personal es la parte más importante para

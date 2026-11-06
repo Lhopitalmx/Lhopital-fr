@@ -4,6 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useRef, useEffect, JSX } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { cld } from "@/lib/cloudinary";
+
+// Fotos de los recuadros en Cloudinary, limitadas a 900 px de ancho para que carguen rápido.
+const cardImage = (publicId: string) => cld(publicId, "c_limit,w_900");
 
 type ShowcaseItem = {
 	title: string;
@@ -19,28 +23,28 @@ const items: ShowcaseItem[] = [
 		title: "EPP",
 		description:
 			"Equipos de protección personal LION® para bomberos y rescatistas profesionales.",
-		image: "/showcase/pp.webp",
+		image: cardImage("pp"),
 		url: "/proteccion-personal",
 	},
 	{
 		title: "RESCATE",
 		description:
 			"Equipo para estabilización vehicular y rescate pesado Res-Q-Jack®. Equipos para levantamiento y estabilización de estructuras colapsadas SAVA® Trelleborg®.",
-		image: "/showcase/rescate.webp",
+		image: cardImage("rescate"),
 		url: "/rescate",
 	},
 	{
-		// TODO: falta imagen.
 		title: "VENTILACIÓN",
 		description:
 			"Equipos de Ventilación positiva, negativa, espacios confinados para bomberos profesionales, para industria y aeropuertos SUPERVAC®.",
+		image: cardImage("ventilacion"),
 		url: "/ventilacion",
 	},
 	{
 		title: "HAZMAT",
 		description:
 			"Equipos para contención de materiales peligrosos y control de derrames SAVA® Trelleborg®.",
-		image: "/showcase/hazmat.webp",
+		image: cardImage("hazmat"),
 		url: "/hazmat",
 	},
 ];
