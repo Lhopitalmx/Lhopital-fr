@@ -30,10 +30,11 @@ const items: ShowcaseItem[] = [
 		url: "/rescate",
 	},
 	{
-		// TODO: falta imagen y página propia de ventilación.
+		// TODO: falta imagen.
 		title: "VENTILACIÓN",
 		description:
 			"Equipos de Ventilación positiva, negativa, espacios confinados para bomberos profesionales, para industria y aeropuertos SUPERVAC®.",
+		url: "/ventilacion",
 	},
 	{
 		title: "HAZMAT",

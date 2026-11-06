@@ -11,12 +11,12 @@ import { useState } from "react";
 
 const brandLogos = [
 	{
-		name: "HexArmor",
-		src: "/partners/EXT-2.png",
-	},
-	{
 		name: "LION",
 		src: "/partners/lion_corporate_logo_tagline_reverse.png",
+	},
+	{
+		name: "HexArmor",
+		src: "/partners/EXT-2.png",
 	},
 ];
 

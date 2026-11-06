@@ -31,7 +31,7 @@ type Partner = {
 const partners: Partner[] = [
 	{ name: "Res-Q-Jack®", logo: "2021_RQJ_Logo-with_tag-light_BG", aspect: 6.9, href: "/rescate" },
 	{ name: "Trelleborg®", logo: "trelleborg", aspect: 2.39, transforms: BLACK_ON_LIGHT, href: "/hazmat" },
-	{ name: "SUPERVAC®", logo: "supervac", aspect: 5.72 },
+	{ name: "SUPERVAC®", logo: "supervac", aspect: 5.72, href: "/ventilacion" },
 	{ name: "LION®", logo: "LIONLogo_stamp_red_tagline", aspect: 2.35, href: "/proteccion-personal" },
 	{ name: "HexArmor®", logo: "HexArmor_navy", aspect: 4.25, href: "/proteccion-personal" },
 ];

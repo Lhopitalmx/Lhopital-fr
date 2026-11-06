@@ -7,7 +7,7 @@ import Link from 'next/link';
 export function PreloadCriticalPages() {
   useEffect(() => {
     // Preload critical pages after initial load
-    const preloadPages = ['/rescate', '/proteccion-personal', '/hazmat', '/nosotros'];
+    const preloadPages = ['/rescate', '/proteccion-personal', '/ventilacion', '/hazmat', '/nosotros'];
     
     preloadPages.forEach(page => {
       const link = document.createElement('link');

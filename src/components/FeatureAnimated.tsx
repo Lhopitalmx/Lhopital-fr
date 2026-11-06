@@ -8,7 +8,8 @@ interface FeatureAnimatedProps {
 	direction: "left" | "right";
 	title: string;
 	description: string;
-	imageSrc: string;
+	// Sin imagen se muestra un recuadro gris del mismo tamaño.
+	imageSrc?: string;
 	alt?: string;
 }
 
@@ -34,14 +35,18 @@ export default function FeatureAnimated({
 						isLeft ? "md:order-1" : "md:order-2"
 					}`}
 				>
-					<Image
-						src={imageSrc}
-						alt={alt || title}
-						width={800}
-						height={600}
-						unoptimized
-						className="w-full h-auto object-cover max-w-full"
-					/>
+					{imageSrc ? (
+						<Image
+							src={imageSrc}
+							alt={alt || title}
+							width={800}
+							height={600}
+							unoptimized
+							className="w-full h-auto object-cover max-w-full"
+						/>
+					) : (
+						<div className="w-full aspect-[4/3] bg-neutral-200" aria-hidden="true" />
+					)}
 				</motion.div>
 
 				{/* Text Card */}

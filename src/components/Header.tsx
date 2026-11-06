@@ -83,6 +83,9 @@ function HeaderContent({
 								<NavLink href="/rescate" className="block hover:underline">
 									Equipo de Rescate
 								</NavLink>
+								<NavLink href="/ventilacion" className="block hover:underline">
+									Equipo de Ventilación
+								</NavLink>
 								<NavLink href="/hazmat" className="block hover:underline">
 									Equipo Hazmat
 								</NavLink>
@@ -160,6 +163,13 @@ function MobileMenu({
 						className="hover:underline"
 					>
 						Equipo de Rescate
+					</NavLink>
+					<NavLink
+						href="/ventilacion"
+						onClick={() => setIsOpen(false)}
+						className="hover:underline"
+					>
+						Equipo de Ventilación
 					</NavLink>
 					<NavLink
 						href="/hazmat"

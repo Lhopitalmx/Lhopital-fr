@@ -3,7 +3,8 @@ import { ReactNode } from "react";
 
 type HeroContainerProps = {
 	title: string;
-	imageSrc: string;
+	// Sin imagen queda el fondo oscuro liso.
+	imageSrc?: string;
 	children?: ReactNode;
 };
 
@@ -15,15 +16,17 @@ export default function HeroContainer({
 	return (
 		<section className="relative w-full h-screen bg-[#272828] overflow-hidden flex items-center justify-center px-8 md:px-20">
 			{/* Background image */}
-			<div className="absolute inset-0 z-0">
-				<Image
-					src={imageSrc}
-					alt={title}
-					fill
-					unoptimized
-					className="object-cover w-full h-full"
-				/>
-			</div>
+			{imageSrc && (
+				<div className="absolute inset-0 z-0">
+					<Image
+						src={imageSrc}
+						alt={title}
+						fill
+						unoptimized
+						className="object-cover w-full h-full"
+					/>
+				</div>
+			)}
 
 			{/* Sombra neutra para que el texto blanco se lea sobre la foto */}
 			<div className="absolute inset-0 bg-black/40 z-0" />
