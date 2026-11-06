@@ -16,21 +16,21 @@ const items: ShowcaseItem[] = [
 	{
 		title: "EPP",
 		description:
-			"Equipos de protección personal para bomberos y rescatistas profesionales.",
+			"Equipos de protección personal LION® para bomberos y rescatistas profesionales.",
 		image: "/showcase/pp.webp",
 		url: "/proteccion-personal",
 	},
 	{
 		title: "RESCATE",
 		description:
-			"Equipo para rescate vehicular, rescate pesado, rescate en estructuras colapsadas y estabilización primaria y secundaría.",
+			"Equipo para estabilización vehicular y rescate pesado Res-Q-Jack®. Equipos para levantamiento y estabilización de estructuras colapsadas SAVA® Trelleborg®.",
 		image: "/showcase/rescate.webp",
 		url: "/rescate",
 	},
 	{
 		title: "HAZMAT",
 		description:
-			"Equipos para contención de materiales peligrosos y control de derrames.",
+			"Equipos para contención de materiales peligrosos y control de derrames SAVA® Trelleborg®.",
 		image: "/showcase/hazmat.webp",
 		url: "/hazmat",
 	},
