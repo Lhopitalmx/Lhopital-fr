@@ -73,15 +73,15 @@ export default function PersonalProtection() {
 				</h1>
 				<FeatureAnimated
 					direction="left"
-					title="Protección para bomberos y rescatistas"
-					description="EPP LION® - Líder mundial en equipos de protección personal para bomberos y rescatistas profesionales con certificación NFPA y EN."
+					title="EPP LION®"
+					description="Líder mundial en equipos de protección personal para bomberos y rescatistas profesionales con certificación NFPA y EN."
 					imageSrc="/features/proteccion1.webp"
 				/>
 
 				<FeatureAnimated
 					direction="right"
-					title="Equipo multipropósito con doble certificación"
-					description="para actividades de rescate técnico e incendios forestales, ergonómicos y seguros para los usuarios que atienden más de una especialidad."
+					title="EPP HexArmor®"
+					description="Los mejores guantes para rescate técnico."
 					imageSrc="/features/proteccion2.webp"
 				/>
 

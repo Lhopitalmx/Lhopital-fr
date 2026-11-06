@@ -85,23 +85,25 @@ export default function Rescue() {
 				</h1>
 				<FeatureAnimated
 					direction="left"
-					title="Equipo diseñado con enfoque especializado"
-					description="de acuerdo con las necesidades de los usuarios y de las operaciones de rescate, 
-						fabricados con alta tecnología bajo los requerimientos de NFPA 1960, EN 13731, EN 13204, EN16471 y EN16473."
+					title="Trelleborg® Sistemas de levantamiento y estabilización"
+					description="Ya sea para levantamiento de estructuras colapsadas, operaciones USAR o rescate vehicular pesado.
+					Los sistemas SAVA de Trelleborg están diseñados para el trabajo pesado y cuentan con certificación EN."
 					imageSrc="/features/rescate1.webp"
 				/>
 
 				<FeatureAnimated
 					direction="right"
-					title="Sistemas de estabilización"
-					description="primaria y secundaria para rescate en estructuras colapsadas, trincheras y espacios confinados"
+					title="Res-Q-Jack® Sistemas de estabilización"
+					description="Para rescate en Zanjas o Rescate vehicular liviano y pesado. Los equipos de Res-Q-Jack® son la 
+					mejor opción para estabilizar los escenarios más complejos y trabajar de manera segura."
 					imageSrc="/features/stabilization-new.webp"
 				/>
 
 				<FeatureAnimated
 					direction="left"
-					title="Equipos para recuperación"
-					description="de vehículos comerciales, vehículos de transporte y todo lo referente a rescate vehicular"
+					title="Trelleborg® Equipos para recuperación"
+					description="Para vehículos comerciales, de transporte o muy voluminosos, los equipos de baja presión 
+					de SAVA de Trelleborg® son la mejor opción para recuperar carga de manera segura sin aumentar el daño de esta"
 					imageSrc="/features/rescate2.webp"
 				/>
 			</section>
