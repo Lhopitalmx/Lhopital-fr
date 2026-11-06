@@ -29,22 +29,18 @@ export default function NosotrosPage() {
 		<>
 			<HeroContainer title="Nosotros" imageSrc="/banners/nosotros1.webp">
 				<p className="mb-4">
-					<strong>Lhopital FR</strong> es una empresa líder dedicada a
-					ofrecer soluciones integrales para profesionales en Protección Civil,
-					Bomberos y Rescate con el objetivo de facilitar las tareas diarias de
-					las corporaciones dedicadas a proteger la integridad de la sociedad y
-					su infraestructura.
+					<strong>Lhopital FR</strong> se dedica a ofrecer soluciones integrales para profesionales 
+					en Protección Civil, Bomberos y Rescate en México, con el objetivo de facilitar las tareas
+					diarias de las corporaciones dedicadas a proteger la integridad de la sociedad y su infraestructura.
 				</p>
 				<p className="mb-4">
-					Trabajamos con compañías nacionales e internacionales en todo el país,
-					así como en las tres instancias de gobierno (Municipal, Estatal y
-					Federal).
+					Somos proveedores de empresas nacionales e internacionales en todo el país, así como en las tres 
+					instancias de gobierno (Municipal, Estatal y Federal).
 				</p>
 				<p className="mb-12">
-					Nuestro equipo de profesionales está calificado para asesorar y apoyar
-					a todas las corporaciones dedicadas a la protección civil con base en
-					sus necesidades específicas, para optimizar el uso de los recursos
-					humanos y materiales.
+					Nuestro equipo de profesionales está calificado para asesorar 
+					a todas las corporaciones dedicadas al rescate, lucha contra incendios, protección civil 					
+					ofreciendo equipos de última generación para desempeñar su labor de manera segura.
 				</p>
 			</HeroContainer>
 

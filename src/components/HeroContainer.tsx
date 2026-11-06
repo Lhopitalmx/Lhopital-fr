@@ -25,8 +25,8 @@ export default function HeroContainer({
 				/>
 			</div>
 
-			{/* Overlay */}
-			<div className="absolute inset-0 bg-[#172E6E]/60 z-0" />
+			{/* Sombra neutra para que el texto blanco se lea sobre la foto */}
+			<div className="absolute inset-0 bg-black/40 z-0" />
 
 			<div className="relative z-20 w-full flex flex-col md:flex-row items-center justify-between h-full">
 				{/* Empty left spacer */}

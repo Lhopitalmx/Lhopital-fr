@@ -11,10 +11,6 @@ import { useState } from "react";
 
 const brandLogos = [
 	{
-		name: "PGI",
-		src: "/partners/PGI-new-logo.webp",
-	},
-	{
 		name: "HexArmor",
 		src: "/partners/EXT-2.png",
 	},
@@ -78,7 +74,7 @@ export default function PersonalProtection() {
 				<FeatureAnimated
 					direction="left"
 					title="Protección para bomberos y rescatistas"
-					description="que garanticen su seguridad con base en su especialidad bajo los requerimientos de la NFPA 1970, 1977, 1975, 1951, 1999."
+					description="EPP LION® - Líder mundial en equipos de protección personal para bomberos y rescatistas profesionales con certificación NFPA y EN."
 					imageSrc="/features/proteccion1.webp"
 				/>
 

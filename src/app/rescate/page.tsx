@@ -93,16 +93,16 @@ export default function Rescue() {
 
 				<FeatureAnimated
 					direction="right"
-					title="Equipos para recuperación"
-					description="de vehículos comerciales, vehículos de transporte y todo lo referente a rescate vehicular"
-					imageSrc="/features/rescate2.webp"
+					title="Sistemas de estabilización"
+					description="primaria y secundaria para rescate en estructuras colapsadas, trincheras y espacios confinados"
+					imageSrc="/features/stabilization-new.webp"
 				/>
 
 				<FeatureAnimated
 					direction="left"
-					title="Sistemas de estabilización"
-					description="primaria y secundaria para rescate en estructuras colapsadas, trincheras y espacios confinados"
-					imageSrc="/features/stabilization-new.webp"
+					title="Equipos para recuperación"
+					description="de vehículos comerciales, vehículos de transporte y todo lo referente a rescate vehicular"
+					imageSrc="/features/rescate2.webp"
 				/>
 			</section>
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
