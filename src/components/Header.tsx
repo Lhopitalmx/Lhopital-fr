@@ -9,6 +9,7 @@ import CTAButton from "./CTAButton";
 import Modal from "./Modal";
 import ContactForm from "./ContactForm";
 import NavLink from "./NavLink";
+import { cld, CLD } from "@/lib/cloudinary";
 
 function MobileContactBar({ onClick }: { onClick: () => void }) {
 	return (
@@ -41,7 +42,7 @@ function HeaderContent({
 			{/* Logo */}
 			<Link href="/" scroll className="z-10">
 				<Image
-					src="/LP-escudos/escudo_bw.webp"
+					src={cld(CLD.escudoBw, "w_140")}
 					alt="Logo"
 					width={70}
 					height={70}

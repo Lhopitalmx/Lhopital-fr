@@ -8,8 +8,10 @@ import { motion, useAnimation, useInView } from "framer-motion";
 type ShowcaseItem = {
 	title: string;
 	description: string;
-	image: string;
-	url: string;
+	// Sin imagen se muestra un fondo oscuro liso.
+	image?: string;
+	// Sin url el recuadro no es un enlace y el botón dice "PRÓXIMAMENTE".
+	url?: string;
 };
 
 const items: ShowcaseItem[] = [
@@ -26,6 +28,12 @@ const items: ShowcaseItem[] = [
 			"Equipo para estabilización vehicular y rescate pesado Res-Q-Jack®. Equipos para levantamiento y estabilización de estructuras colapsadas SAVA® Trelleborg®.",
 		image: "/showcase/rescate.webp",
 		url: "/rescate",
+	},
+	{
+		// TODO: falta imagen y página propia de ventilación.
+		title: "VENTILACIÓN",
+		description:
+			"Equipos de Ventilación positiva, negativa, espacios confinados para bomberos profesionales, para industria y aeropuertos SUPERVAC®.",
 	},
 	{
 		title: "HAZMAT",
@@ -79,7 +87,7 @@ export default function EquipmentShowcase(): JSX.Element {
 					Contamos con las mejores marcas en el mercado
 				</p>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{items.map((item, i) => (
 						<Card key={i} item={item} delay={i * 0.2} />
 					))}
@@ -115,22 +123,24 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 				},
 			}}
 		>
-			<Link
-				href={item.url}
-				className="block w-full h-full"
+			<CardWrapper
+				url={item.url}
 				onMouseEnter={() => setHovered(true)}
 				onMouseLeave={() => setHovered(false)}
 			>
 				<div className="flex flex-col shadow-lg overflow-hidden">
 					{/* Image */}
-					<div className="relative w-full h-[500px]">
-					<Image
-						src={item.image}
-						alt={item.title}
-						fill
-						unoptimized
-						className="object-cover object-center"
-					/>						{/* Overlay (desktop only) */}
+					<div className="relative w-full h-[500px] bg-neutral-900">
+						{item.image && (
+							<Image
+								src={item.image}
+								alt={item.title}
+								fill
+								unoptimized
+								className="object-cover object-center"
+							/>
+						)}
+						{/* Overlay (desktop only) */}
 						<div className="hidden md:block absolute inset-4 z-10 overflow-hidden">
 							<div
 								className="absolute inset-0 bg-black/50 transition-all duration-500 ease-in-out"
@@ -154,12 +164,37 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 
 					{/* CTA Button */}
 					<div className="bg-[#b01f29] text-white text-center py-4 text-lg font-bold tracking-wide">
-						<span className="flex items-center justify-center gap-2">
-							<span className="text-2xl">+</span> VER MÁS
-						</span>
+						{item.url ? (
+							<span className="flex items-center justify-center gap-2">
+								<span className="text-2xl">+</span> VER MÁS
+							</span>
+						) : (
+							<span className="flex items-center justify-center py-1">PRÓXIMAMENTE</span>
+						)}
 					</div>
 				</div>
-			</Link>
+			</CardWrapper>
 		</motion.div>
+	);
+}
+
+function CardWrapper({
+	url,
+	children,
+	onMouseEnter,
+	onMouseLeave,
+}: {
+	url?: string;
+	children: React.ReactNode;
+	onMouseEnter: () => void;
+	onMouseLeave: () => void;
+}) {
+	const props = { className: "block w-full h-full", onMouseEnter, onMouseLeave };
+	return url ? (
+		<Link href={url} {...props}>
+			{children}
+		</Link>
+	) : (
+		<div {...props}>{children}</div>
 	);
 }
