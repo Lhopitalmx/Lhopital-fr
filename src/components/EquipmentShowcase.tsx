@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState, useRef, useEffect, JSX } from "react";
+import React, { useRef, useEffect, JSX } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { cld } from "@/lib/cloudinary";
 
@@ -30,7 +30,7 @@ const items: ShowcaseItem[] = [
 		title: "RESCATE",
 		description:
 			"Equipo para estabilización vehicular y rescate pesado Res-Q-Jack®. Equipos para levantamiento y estabilización de estructuras colapsadas SAVA® Trelleborg®.",
-		image: cardImage("rescate"),
+		image: cardImage("rescate_inicio"),
 		url: "/rescate",
 	},
 	{
@@ -106,7 +106,6 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 	const ref = useRef(null);
 	const inView = useInView(ref, { once: true });
 	const controls = useAnimation();
-	const [hovered, setHovered] = useState(false);
 
 	useEffect(() => {
 		if (inView) {
@@ -128,11 +127,7 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 				},
 			}}
 		>
-			<CardWrapper
-				url={item.url}
-				onMouseEnter={() => setHovered(true)}
-				onMouseLeave={() => setHovered(false)}
-			>
+			<CardWrapper url={item.url}>
 				<div className="flex flex-col shadow-lg overflow-hidden">
 					{/* Image */}
 					<div className="relative w-full h-[500px] bg-neutral-900">
@@ -145,20 +140,12 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 								className="object-cover object-center"
 							/>
 						)}
-						{/* Overlay (desktop only) */}
-						<div className="hidden md:block absolute inset-4 z-10 overflow-hidden">
-							<div
-								className="absolute inset-0 bg-black/50 transition-all duration-500 ease-in-out"
-								style={{
-									clipPath: hovered
-										? "polygon(0 0, 100% 0, 100% 100%, 0 100%)"
-										: "polygon(0 50%, 100% 100%, 100% 100%, 0 100%)",
-								}}
-							></div>
-						</div>
-
-						{/* Mobile overlay */}
-						<div className="block md:hidden absolute inset-4 bg-black/50 z-10" />
+						{/* Sombra diagonal abajo para que el texto blanco se lea; la foto queda limpia arriba */}
+						<div
+							aria-hidden="true"
+							className="absolute inset-4 z-10 bg-black/50"
+							style={{ clipPath: "polygon(0 50%, 100% 100%, 100% 100%, 0 100%)" }}
+						/>
 
 						{/* Text */}
 						<div className="absolute inset-0 flex flex-col justify-end p-6 z-20">
@@ -183,18 +170,8 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 	);
 }
 
-function CardWrapper({
-	url,
-	children,
-	onMouseEnter,
-	onMouseLeave,
-}: {
-	url?: string;
-	children: React.ReactNode;
-	onMouseEnter: () => void;
-	onMouseLeave: () => void;
-}) {
-	const props = { className: "group block w-full h-full", onMouseEnter, onMouseLeave };
+function CardWrapper({ url, children }: { url?: string; children: React.ReactNode }) {
+	const props = { className: "group block w-full h-full" };
 	return url ? (
 		<Link href={url} {...props}>
 			{children}

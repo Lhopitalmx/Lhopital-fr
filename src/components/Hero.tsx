@@ -6,6 +6,19 @@ import ContactForm from "./ContactForm";
 import { useState } from "react";
 import { cldVideo } from "@/lib/cloudinary";
 
+// Video del hero en Cloudinary, armado con tres tramos del original para que pese menos:
+// 0-10 s, 15-20 s y 25-29.9 s (en el segundo 30 empiezan logos de otras empresas).
+// ac_none quita el audio porque se reproduce sin sonido.
+const HERO_VIDEO = "TRELLEBORGXLHOPITAL";
+const HERO_VIDEO_TRANSFORMS = [
+	"so_0,eo_10",
+	`l_video:${HERO_VIDEO},so_15,eo_20,fl_splice`,
+	"fl_layer_apply",
+	`l_video:${HERO_VIDEO},so_25,eo_29.9,fl_splice`,
+	"fl_layer_apply",
+	"ac_none,q_auto:eco,c_limit,w_1920",
+].join("/");
+
 // Misma cursiva que usa Moto para "The standard"
 const cormorant = Cormorant_Garamond({
 	subsets: ["latin"],
@@ -27,11 +40,11 @@ export default function Hero() {
 				muted
 				loop
 				playsInline
-				poster={cldVideo("HeroVid", "jpg", "so_0,q_auto,c_limit,w_1920")}
+				poster={cldVideo(HERO_VIDEO, "jpg", "so_0,q_auto,c_limit,w_1920")}
 				className="absolute top-0 left-0 w-full h-full object-cover z-0"
 			>
-				<source src={cldVideo("HeroVid", "webm")} type="video/webm" />
-				<source src={cldVideo("HeroVid", "mp4")} type="video/mp4" />
+				<source src={cldVideo(HERO_VIDEO, "webm", HERO_VIDEO_TRANSFORMS)} type="video/webm" />
+				<source src={cldVideo(HERO_VIDEO, "mp4", HERO_VIDEO_TRANSFORMS)} type="video/mp4" />
 			</video>
 
 			{/* Overlay neutro (sin tinte azul): oscuro a la izquierda y abajo para que el texto respire */}
