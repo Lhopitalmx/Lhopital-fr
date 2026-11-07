@@ -71,7 +71,7 @@ export function LocalBusinessSchema() {
     description:
       'Distribuidor de equipo especializado para rescate técnico, materiales peligrosos (HAZMAT), ventilación y protección personal en México. Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC, y distribuidores autorizados de LION y HexArmor.',
     url: 'https://www.lhopital-fr.mx/',
-    telephone: '+52-55-9470-5028',
+    telephone: '+52-55-9462-1951',
     email: 'contacto@lhopital-fr.mx',
     address: {
       '@type': 'PostalAddress',
@@ -84,12 +84,11 @@ export function LocalBusinessSchema() {
       latitude: 19.320772,
       longitude: -99.180272,
     },
-    openingHours: 'Mo-Fr 08:00-18:00',
+    openingHours: ['Mo-Fr 11:00-14:00', 'Mo-Fr 16:00-19:00', 'Sa 11:00-14:00'],
     sameAs: [
       'https://www.instagram.com/lhopitalfr/',
       'https://www.facebook.com/lhopitalfr',
       'https://www.youtube.com/@LhopitalFR',
-      // Verifica que esta página de LinkedIn exista; si no, elimina la línea:
       'https://www.linkedin.com/company/lhopital-fr',
     ],
     brand: [
