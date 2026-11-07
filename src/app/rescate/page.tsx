@@ -27,11 +27,6 @@ const brandLogos = [
         src: "/partners/Sava.png",
         invert: false,
     },
-    {
-        name: "Génesis",
-        src: "/partners/gsr_hrz_logomark_white_red.png",
-        invert: true,
-    },
 ];
 
 export default function Rescue() {
@@ -55,7 +50,7 @@ export default function Rescue() {
                     {brandLogos.map((brand) => (
                         <div
                             key={brand.name}
-                            className={`relative ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
+                            className={`relative last:col-span-2 last:justify-self-center ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
                         >
                             <Image
                                 src={brand.src}
