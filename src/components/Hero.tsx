@@ -45,18 +45,18 @@ export default function Hero() {
 			/>
 
 			{/* Hero content: centrado vertical, alineado a la izquierda (estilo Moto) */}
-			<div className="relative z-10 w-full max-w-[1440px] mx-auto h-full px-6 sm:px-10 lg:px-20 flex items-center pt-24">
+			<div className="relative z-10 w-full max-w-[1440px] mx-auto h-full px-6 sm:px-10 lg:px-16 flex items-center pt-24">
 				<div className="max-w-3xl">
-					{/* Eyebrow */}
+					{/* Título principal (H1 para Google) con estilo de etiqueta */}
 					<div className="flex items-center gap-3 mb-8">
 						<span aria-hidden="true" className="block w-10 h-px bg-[#C9A961]" />
-						<p className="font-[almaq] text-[#C9A961] text-xs sm:text-sm font-bold tracking-[0.35em] uppercase">
-							Est. 2021 &middot; CDMX, México
-						</p>
+						<h1 className="font-[almaq] text-[#C9A961] text-xs sm:text-sm font-bold tracking-[0.35em] uppercase">
+							Fire &amp; Rescue
+						</h1>
 					</div>
 
-					{/* Título */}
-					<h1 className="font-[rider] text-[#F4F1EC] leading-[0.85] tracking-tight mb-6">
+					{/* Slogan */}
+					<p className="font-[rider] text-[#F4F1EC] leading-[0.85] tracking-tight mb-6">
 						<span className="block text-6xl sm:text-7xl lg:text-8xl xl:text-9xl font-extrabold uppercase">
 							We are
 						</span>
@@ -65,11 +65,11 @@ export default function Hero() {
 						>
 							The Standard
 						</span>
-					</h1>
+					</p>
 
 					{/* Subtítulo */}
 					<p className="font-[almaq] text-[#F4F1EC]/70 text-sm sm:text-base font-semibold tracking-[0.3em] uppercase mb-10">
-						Fire &amp; Rescue
+						Est. 2021 &middot; CDMX, México
 					</p>
 
 					{/* CTA */}

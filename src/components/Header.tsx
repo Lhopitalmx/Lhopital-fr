@@ -208,7 +208,7 @@ export default function Header() {
 
 			<header
 				className={`
-                    fixed left-0 w-full z-40 transition-all duration-300 ease-in-out flex items-center justify-between px-6 md:px-20
+                    fixed left-0 w-full z-40 transition-all duration-300 ease-in-out flex items-center
                         ${
 							scrolled || isOpen
 								? "bg-black md:bg-black md:h-20 md:shadow-lg"
@@ -217,12 +217,15 @@ export default function Header() {
                     h-20 md:top-0 top-10
                 `}
 			>
-				<HeaderContent
-					isOpen={isOpen}
-					setIsOpen={setIsOpen}
-					onClick={handleClick}
-					scrolled={scrolled}
-				/>
+				{/* Mismo contenedor que el encabezado de Lhopital Moto: logo alineado con el texto del hero */}
+				<div className="w-full max-w-[1440px] mx-auto px-6 sm:px-10 lg:px-16">
+					<HeaderContent
+						isOpen={isOpen}
+						setIsOpen={setIsOpen}
+						onClick={handleClick}
+						scrolled={scrolled}
+					/>
+				</div>
 			</header>
 
 			<MobileMenu isOpen={isOpen} setIsOpen={setIsOpen} />
