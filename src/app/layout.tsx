@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 	metadataBase: new URL("https://www.lhopital-fr.mx"),
 	title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 	description:
-		"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y HexArmor en México, y distribuidores de LION y SUPERVAC. Equipo especializado para rescate técnico, materiales peligrosos, ventilación y protección personal de bomberos, con certificaciones NFPA y EN.",
+		"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, materiales peligrosos, ventilación y protección personal de bomberos, con certificaciones NFPA y EN.",
 	keywords:
 		"equipo de rescate México, HAZMAT, protección personal bomberos, ventiladores bomberos, Trelleborg México, Res-Q-Jack México, HexArmor, LION, SUPERVAC, distribuidor equipo bomberos, protección civil",
 	authors: [{ name: "Lhopital FR" }],
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
-			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y HexArmor en México, y distribuidores de LION y SUPERVAC. Equipo especializado para rescate técnico, HAZMAT, ventilación y protección personal de bomberos.",
+			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, HAZMAT, ventilación y protección personal de bomberos.",
 		url: "https://www.lhopital-fr.mx",
 		siteName: "Lhopital FR",
 		locale: "es_MX",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 		card: "summary_large_image",
 		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
-			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y HexArmor en México, y distribuidores de LION y SUPERVAC.",
+			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor.",
 	},
 	// Cuando tengan el código de Google Search Console, descomenten y peguen aquí:
 	// verification: {
