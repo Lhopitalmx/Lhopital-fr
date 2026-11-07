@@ -1,5 +1,31 @@
 "use client";
 
+import type { ReactNode } from "react";
+
+const link = "underline text-[#b01f29]";
+
+function H2({ children }: { children: ReactNode }) {
+	return (
+		<h2 className="text-xl font-semibold mb-2 text-[#111111]">{children}</h2>
+	);
+}
+
+function List({ items }: { items: ReactNode[] }) {
+	return (
+		<ul className="list-disc pl-6 mb-2 space-y-1">
+			{items.map((item, i) => (
+				<li key={i}>{item}</li>
+			))}
+		</ul>
+	);
+}
+
+const Email = () => (
+	<a href="mailto:contacto@lhopital.mx" className={link}>
+		contacto@lhopital.mx
+	</a>
+);
+
 export default function AvisoDePrivacidad() {
 	return (
 		<main className="bg-white text-black font-light">
@@ -11,151 +37,202 @@ export default function AvisoDePrivacidad() {
 				</h1>
 
 				<section className="mb-6">
+					<H2>Responsable</H2>
 					<p>
-						En <strong>LHOPITAL S.A. DE C.V.</strong> la información de nuestros
-						clientes y potenciales clientes es tratada de forma estrictamente
-						confidencial, por lo que hacemos un esfuerzo permanente para
-						salvaguardarla.
+						<strong>LHOPITAL, S.A. de C.V.</strong> (&quot;Lhopital&quot;), a
+						través de su división Lhopital FR, con domicilio en Andador 5,
+						5C-31, Col. Alianza Popular Revolucionaria, Alcaldía Coyoacán, C.P.
+						04800, Ciudad de México, es responsable del tratamiento de tus datos
+						personales conforme a la Ley Federal de Protección de Datos
+						Personales en Posesión de los Particulares, publicada en el Diario
+						Oficial de la Federación el 20 de marzo de 2025 (la
+						&quot;Ley&quot;).
 					</p>
-					<p className="mt-4">
-						En cumplimiento con lo establecido por la Ley Federal de Protección
-						de Datos Personales en Posesión de Particulares publicada en el
-						Diario Oficial de la Federación el día 5 de julio de 2010, extiende
-						y hace de su conocimiento para todos los fines legales a que haya
-						lugar, el presente Aviso de Privacidad de Datos Personales.
-					</p>
-					<p className="mt-4">
-						Al ingresar y utilizar la página de internet, cuyo nombre de dominio
-						es:{" "}
-						<a
-							href="https://www.lhopital-fr.mx"
-							className="underline text-[#b01f29]"
-						>
+				</section>
+
+				<section className="mb-6">
+					<H2>Datos que recabamos</H2>
+					<p className="mb-2">
+						Recabamos únicamente los datos necesarios para atender tu solicitud
+						de información, cotización o compra, cuando nos los proporcionas a
+						través del formulario de contacto de{" "}
+						<a href="https://www.lhopital-fr.mx" className={link}>
 							www.lhopital-fr.mx
 						</a>
-						, usted declara que está aceptando los términos y condiciones
-						contenidos en este aviso. En caso contrario deberá abstenerse de
-						compartir cualquier tipo de información con LHOPITAL.
+						, por correo electrónico o por teléfono:
 					</p>
-					<p className="mt-4">
-						La sola utilización del sitio implica la aceptación plena e
-						incondicional de este aviso en su versión vigente.
+					<List
+						items={[
+							<>
+								<strong>Identificación y contacto:</strong> nombre completo,
+								correo electrónico y teléfono.
+							</>,
+							<>
+								<strong>Datos laborales:</strong> institución, dependencia o
+								empresa en la que trabajas, cargo, y ciudad o estado.
+							</>,
+							<>
+								<strong>Solicitud:</strong> productos, marcas o servicios de tu
+								interés y los detalles de tu requerimiento.
+							</>,
+							<>
+								<strong>Facturación, solo si concretas una compra:</strong> RFC,
+								nombre o razón social, régimen fiscal, código postal fiscal y
+								Constancia de Situación Fiscal.
+							</>,
+							<>
+								<strong>Entrega, solo si concretas una compra:</strong>{" "}
+								domicilio de entrega y nombre de quien recibe.
+							</>,
+						]}
+					/>
+					<p className="mb-2">No recabamos datos personales sensibles.</p>
+					<p>
+						<strong>Sin ventas en línea.</strong> Este sitio es informativo: no
+						se realizan ventas ni cobros a través de él. Las compras se
+						formalizan directamente con nuestro equipo comercial mediante
+						cotización.
 					</p>
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
-						Datos personales y forma de recabarse
-					</h2>
+					<H2>Finalidades</H2>
+					<p className="mb-2 font-semibold">
+						Finalidades primarias (necesarias para la relación contigo):
+					</p>
+					<List
+						items={[
+							"Atender tus solicitudes de información, cotización o demostración de productos.",
+							"Dar seguimiento comercial a las cotizaciones que solicites.",
+							"Formalizar, facturar y entregar las compras que realices.",
+							"Brindarte soporte técnico y atender garantías de los equipos adquiridos.",
+							"Cumplir obligaciones legales, fiscales y requerimientos de autoridad.",
+						]}
+					/>
+					<p className="mb-2 font-semibold">
+						Finalidades secundarias (no son necesarias para atender tu
+						solicitud):
+					</p>
+					<List
+						items={[
+							"Enviarte información sobre nuevos productos, capacitaciones, demostraciones y eventos.",
+							"Realizar encuestas de satisfacción y estudios estadísticos internos.",
+						]}
+					/>
 					<p>
-						La recolección de datos personales cumple con los principios de
-						licitud, calidad, consentimiento, información, finalidad, lealtad,
-						proporcionalidad y responsabilidad.
-					</p>
-					<p className="mt-2">
-						LHOPITAL recabará los datos necesarios de usted directamente o
-						mediante terceros con su consentimiento. Estos pueden incluir:
-						nombre completo, género, edad, CURP, RFC, IFE/INE, datos de
-						contacto, entre otros.
-					</p>
-					<p className="mt-2">
-						Sin estos datos, no sería posible brindar los servicios ofrecidos.
+						Si no deseas que usemos tus datos para las finalidades secundarias,
+						escríbenos a <Email /> con el asunto &quot;No deseo
+						publicidad&quot;, o usa el enlace para darte de baja que incluye
+						cada correo informativo. Tu negativa no afecta la atención de tus
+						solicitudes ni tus compras.
 					</p>
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
-						Finalidades y transferencia de datos personales
-					</h2>
-					<p>
-						Al proporcionar sus datos, usted consiente su tratamiento por parte
-						de LHOPITAL y sus terceros proveedores dentro o fuera de México para
-						fines como: identificación, contacto, encuestas, publicidad,
-						promociones, eventos, cumplimiento legal, atención al cliente, y
-						comunicación comercial.
+					<H2>Con quién compartimos tus datos</H2>
+					<p className="mb-2">
+						No vendemos tus datos personales. Los compartimos solo en la medida
+						necesaria con:
 					</p>
-					<p className="mt-2">
-						LHOPITAL implementa medidas físicas, electrónicas y administrativas
-						para proteger sus datos, y sólo personal autorizado puede acceder a
-						ellos.
+					<List
+						items={[
+							"Proveedores tecnológicos de hospedaje web y de envío de correos, incluido el servicio que procesa el formulario de contacto del sitio, que tratan los datos por cuenta de Lhopital y pueden tener servidores fuera de México.",
+							"Empresas de paquetería, solo para entregar las compras que realices.",
+							"Fabricantes de las marcas que distribuimos, que pueden estar fuera de México, solo cuando sea necesario para atender una garantía o soporte técnico de un equipo que adquiriste.",
+							"Autoridades competentes, cuando la ley lo exija.",
+						]}
+					/>
+				</section>
+
+				<section className="mb-6">
+					<H2>Derechos ARCO y revocación del consentimiento</H2>
+					<p className="mb-2">
+						Puedes acceder, rectificar, cancelar u oponerte al tratamiento de
+						tus datos (derechos ARCO), revocar tu consentimiento o limitar su
+						uso y divulgación, enviando una solicitud a <Email /> que incluya:
+						tu nombre, un medio para responderte, copia de una identificación
+						oficial (o los documentos que acrediten la representación) y la
+						descripción clara de los datos y del derecho que quieres ejercer.
+						Responderemos dentro de los plazos que establece la Ley. El
+						ejercicio de estos derechos es gratuito.
+					</p>
+					<p>
+						Si consideras que tu derecho a la protección de datos personales fue
+						vulnerado, puedes acudir ante la Secretaría Anticorrupción y Buen
+						Gobierno, autoridad competente en la materia.
 					</p>
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
-						Derechos ARCO y revocación
-					</h2>
+					<H2>Cookies y herramientas de medición</H2>
+					<p className="mb-2">
+						Este sitio no utiliza cookies de analítica, publicidad ni
+						seguimiento. Solo puede usar el almacenamiento técnico indispensable
+						para su funcionamiento.
+					</p>
+					<p className="mb-2">
+						Utilizamos Google Search Console, un servicio de Google que nos
+						muestra información agregada sobre cómo aparece este sitio en los
+						resultados de búsqueda de Google, como búsquedas, clics e
+						impresiones. Esta herramienta no instala cookies en tu navegador ni
+						nos permite identificarte.
+					</p>
 					<p>
-						Usted puede ejercer en todo momento sus derechos de acceso,
-						rectificación, cancelación u oposición (ARCO), así como revocar su
-						consentimiento escribiendo a{" "}
+						Si incorporamos herramientas de analítica o de publicidad,
+						actualizaremos este aviso.
+					</p>
+				</section>
+
+				<section className="mb-6">
+					<H2>Seguridad</H2>
+					<p>
+						Aplicamos medidas administrativas, técnicas y físicas para proteger
+						tus datos contra daño, pérdida, alteración o acceso no autorizado.
+						Solo el personal que los necesita para las finalidades descritas
+						tiene acceso a ellos.
+					</p>
+				</section>
+
+				<section className="mb-6">
+					<H2>Consentimiento</H2>
+					<p>
+						Si nos proporcionas tus datos por cualquiera de los medios descritos
+						después de haber tenido a tu disposición este aviso, consientes su
+						tratamiento para las finalidades primarias. Puedes oponerte a las
+						finalidades secundarias en cualquier momento, como se indica arriba.
+					</p>
+				</section>
+
+				<section className="mb-6">
+					<H2>Cambios a este aviso</H2>
+					<p>
+						Cualquier cambio se publicará en{" "}
 						<a
-							href="mailto:contacto@lhopital-fr.mx"
-							className="underline text-[#b01f29]"
+							href="https://www.lhopital-fr.mx/aviso-de-privacidad"
+							className={link}
 						>
-							contacto@lhopital-fr.mx
+							www.lhopital-fr.mx/aviso-de-privacidad
 						</a>{" "}
-						o llamando al (55) 9407 5028.
-					</p>
-					<p className="mt-2">
-						También podrá limitar el uso o divulgación de sus datos siguiendo el
-						mismo procedimiento.
-					</p>
-					<p className="mt-2">
-						Si LHOPITAL no responde en los plazos establecidos, usted puede
-						acudir al IFAI para iniciar un procedimiento de protección de
-						derechos.
+						con su fecha de actualización.
 					</p>
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">Cookies</h2>
+					<H2>Contacto</H2>
 					<p>
-						Utilizamos cookies para mejorar su experiencia de compra. Estas
-						pueden ser desactivadas en su navegador, aunque algunas funciones
-						pueden dejar de funcionar correctamente.
-					</p>
-				</section>
-
-				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
-						Modificaciones
-					</h2>
-					<p>
-						Este aviso puede modificarse en cualquier momento. Las
-						actualizaciones se comunicarán en{" "}
-						<a
-							href="https://www.lhopital-fr.mx"
-							className="underline text-[#b01f29]"
-						>
-							www.lhopital-fr.mx
-						</a>{" "}
-						u otros medios que LHOPITAL considere.
-					</p>
-				</section>
-
-				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
-						Contacto y domicilio
-					</h2>
-					<p>
-						LHOPITAL S.A. DE C.V. tiene domicilio en: Andador 5, 5C-31, Alianza
-						Popular Revolucionaria, Coyoacán, CDMX, 04800.
-					</p>
-					<p className="mt-2">
-						Atención al cliente: (55) 9407 5028, de 9 am a 6 pm, o al correo{" "}
-						<a
-							href="mailto:contacto-fr@lhopital.mx"
-							className="underline text-[#b01f29]"
-						>
-							contacto-fr@lhopital.mx
+						<Email /> ·{" "}
+						<a href="tel:+525594621951" className={link}>
+							+52 (55) 9462 1951
 						</a>
 					</p>
+					<p className="mt-2">
+						Lunes a viernes 11:00–14:00 y 16:00–19:00 · Sábado 11:00–14:00
+					</p>
 				</section>
 
-				<section className="mt-8 text-xs italic text-neutral-500">
-					Última actualización: 07 de febrero 2025
-				</section>
+				<p className="mt-8 text-xs italic text-neutral-500">
+					Última actualización: 7 de noviembre de 2026
+				</p>
 			</section>
 		</main>
 	);
