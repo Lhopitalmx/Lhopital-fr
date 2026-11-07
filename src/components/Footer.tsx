@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { cld, CLD } from "@/lib/cloudinary";
 
 const Footer = () => {
 	return (
@@ -10,7 +11,7 @@ const Footer = () => {
 				{/* Column 1: Logo */}
 				<div className="flex flex-col items-center md:items-start">
 					<Image
-						src="/LP-logos/horiz_oscuro_bw.webp"
+						src={cld(CLD.logoHorizOscuroBw, "w_400")}
 						alt="Lhopital Logo"
 						width={200}
 						height={40}

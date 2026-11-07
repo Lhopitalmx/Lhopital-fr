@@ -161,11 +161,11 @@ export default function ContactoForm() {
 			<button
 				type="submit"
 				disabled={!isValid || isSubmitting}
-				className={`w-full font-bold py-4 tracking-wide uppercase transition
+				className={`w-full font-[almaq] text-xs font-bold py-4 tracking-[0.2em] uppercase transition-colors duration-300
 		        ${
 			        !isValid || isSubmitting
 			        	? "bg-gray-300 text-gray-600 cursor-not-allowed"
-			        	: "bg-[#b01f29] text-white hover:bg-[#911820]"
+			        	: "bg-[#111111] text-[#F4F1EC] hover:bg-[#B01F29]"
 		        }`}
 			>
 				{isSubmitting ? "Enviando..." : "Enviar mensaje"}

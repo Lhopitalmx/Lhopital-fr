@@ -13,6 +13,7 @@ import {
 	Cpu,
 } from "lucide-react";
 import Image from "next/image";
+import { cld } from "@/lib/cloudinary";
 import { useState } from "react";
 
 export default function NosotrosPage() {
@@ -27,24 +28,20 @@ export default function NosotrosPage() {
 	];
 	return (
 		<>
-			<HeroContainer title="Nosotros" imageSrc="/banners/nosotros1.webp">
+			<HeroContainer title="Nosotros" imageSrc={cld("nosotros1", "c_limit,w_2400")}>
 				<p className="mb-4">
-					<strong>Lhopital FR</strong> es una empresa líder dedicada a
-					ofrecer soluciones integrales para profesionales en Protección Civil,
-					Bomberos y Rescate con el objetivo de facilitar las tareas diarias de
-					las corporaciones dedicadas a proteger la integridad de la sociedad y
-					su infraestructura.
+					<strong>Lhopital FR</strong> se dedica a ofrecer soluciones integrales para profesionales 
+					en Protección Civil, Bomberos y Rescate en México, con el objetivo de facilitar las tareas
+					diarias de las corporaciones dedicadas a proteger la integridad de la sociedad y su infraestructura.
 				</p>
 				<p className="mb-4">
-					Trabajamos con compañías nacionales e internacionales en todo el país,
-					así como en las tres instancias de gobierno (Municipal, Estatal y
-					Federal).
+					Somos proveedores de empresas nacionales e internacionales en todo el país, así como en las tres 
+					instancias de gobierno (Municipal, Estatal y Federal).
 				</p>
 				<p className="mb-12">
-					Nuestro equipo de profesionales está calificado para asesorar y apoyar
-					a todas las corporaciones dedicadas a la protección civil con base en
-					sus necesidades específicas, para optimizar el uso de los recursos
-					humanos y materiales.
+					Nuestro equipo de profesionales está calificado para asesorar 
+					a todas las corporaciones dedicadas al rescate, lucha contra incendios, protección civil 					
+					ofreciendo equipos de última generación para desempeñar su labor de manera segura.
 				</p>
 			</HeroContainer>
 
@@ -52,11 +49,11 @@ export default function NosotrosPage() {
 				<div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
 					{/* Misión */}
 					<div className="flex flex-col items-center">
-						<h2 className="text-[#b01f29] text-4xl font-semibold mb-4 text-center">
+						<h2 className="text-[#111111] text-4xl font-semibold mb-4 text-center">
 							Misión
 						</h2>
 						<div className="bg-black text-white p-8 w-full h-full">
-							<p className="text-base leading-relaxed text-justify">
+							<p className="text-base leading-relaxed text-left">
 								Proveer el mejor equipamiento de manera eficiente e integral a
 								las corporaciones dedicadas a la Protección Civil, Rescate y
 								respuesta a emergencias de cualquier índole.
@@ -66,11 +63,11 @@ export default function NosotrosPage() {
 
 					{/* Visión */}
 					<div className="flex flex-col items-center">
-						<h2 className="text-[#b01f29] text-4xl font-semibold mb-4 text-center">
+						<h2 className="text-[#111111] text-4xl font-semibold mb-4 text-center">
 							Visión
 						</h2>
 						<div className="bg-black text-white p-8 w-full h-full">
-							<p className="text-base leading-relaxed text-justify">
+							<p className="text-base leading-relaxed text-left">
 								Ser el principal facilitador de soluciones y equipo para
 								bomberos, rescatistas, brigadistas y personal de emergencias de
 								todo el país, cuidando su salud e integridad.
@@ -84,14 +81,14 @@ export default function NosotrosPage() {
 			{/* Background image + red overlay */}
 		<div className="absolute inset-0 -z-10">
 			<Image
-				src="/showcase/burntBrickWall.webp"
+				src={cld("burntBrickWall")}
 				alt="Fondo de valores"
 				fill
 				unoptimized
 				className="object-cover"
 				priority
 			/>
-			<div className="absolute inset-0 bg-[#b01f29]/50" />
+			<div className="absolute inset-0 bg-black/60" />
 		</div>            {/* Content */}
 				<div className="max-w-6xl mx-auto relative z-10">
 					<h2 className="text-3xl font-bold text-center mb-12">Valores</h2>
@@ -112,12 +109,12 @@ export default function NosotrosPage() {
 
 			<section className="bg-[#FAF9F6] px-6 py-20 text-center text-black">
 				<div className="max-w-xl mx-auto">
-					<p className="text-lg md:text-xl leading-relaxed mb-8 text-justify">
+					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
 						contactando a nuestros especialistas que con gusto atenderán su
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)} hovered>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
 						CONTÁCTANOS
 					</CTAButton>
 				</div>

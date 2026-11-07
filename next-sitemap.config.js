@@ -25,6 +25,7 @@ module.exports = {
       '/': 1.0,
       '/rescate': 0.9,
       '/proteccion-personal': 0.9,
+      '/ventilacion': 0.9,
       '/hazmat': 0.9,
       '/nosotros': 0.8,
     };

@@ -8,19 +8,16 @@ import FeatureIntro from "@/components/FeatureIntro";
 import HeroContainer from "@/components/HeroContainer";
 import Modal from "@/components/Modal";
 import { useState } from "react";
+import { cld } from "@/lib/cloudinary";
 
 const brandLogos = [
 	{
-		name: "PGI",
-		src: "/partners/PGI-new-logo.webp",
+		name: "LION",
+		src: cld("lion_corporate_logo_tagline_reverse", "c_limit,w_600"),
 	},
 	{
 		name: "HexArmor",
-		src: "/partners/EXT-2.png",
-	},
-	{
-		name: "LION",
-		src: "/partners/lion_corporate_logo_tagline_reverse.png",
+		src: cld("EXT-2", "c_limit,w_600"),
 	},
 ];
 
@@ -40,7 +37,8 @@ export default function PersonalProtection() {
 		<>
 			<HeroContainer
 				title="Protección Personal"
-				imageSrc="/banners/proteccion-personal.webp"
+				imageSrc={cld("proteccion-personal1", "c_limit,w_2400")}
+				imagePosition="object-[20%_0%]"
 			>
 				<p className="text-lg md:text-2xl font-light max-w-xl">
 					El equipo de protección personal es la parte más importante para
@@ -67,43 +65,43 @@ export default function PersonalProtection() {
 			<FeatureIntro
 				title="Todos nuestros equipos cuentan con certificación NFPA "
 				subtitle="(National Fire Protection Association), garantizando la seguridad y calidad de los equipos."
-				imageSrc="/items/pp1.webp"
+				imageSrc={cld("pp1", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
 				alt="Protección Personal item"
 				// catalogOption={catalogOptions}
 			/>
-			<section className="w-full bg-white text-red-600 py-20 px-6 md:px-20 ">
-				<h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
+			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
+				<h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS DE PROTECCIÓN PERSONAL ESPECIALIZADOS EN:
-				</h1>
+				</h2>
 				<FeatureAnimated
 					direction="left"
-					title="Protección para bomberos y rescatistas"
-					description="que garanticen su seguridad con base en su especialidad bajo los requerimientos de la NFPA 1970, 1977, 1975, 1951, 1999."
-					imageSrc="/features/proteccion1.webp"
+					title="EPP LION®"
+					description="Líder mundial en equipos de protección personal para bomberos y rescatistas profesionales con certificación NFPA y EN."
+					imageSrc={cld("proteccion1v", "c_limit,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="right"
-					title="Equipo multipropósito con doble certificación"
-					description="para actividades de rescate técnico e incendios forestales, ergonómicos y seguros para los usuarios que atienden más de una especialidad."
-					imageSrc="/features/proteccion2.webp"
+					title="EPP HexArmor®"
+					description="Los mejores guantes para rescate técnico."
+					imageSrc={cld("proteccion2h", "c_pad,ar_3:2,b_white,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="left"
 					title="Equipos personalizados"
 					description="desarrollados y fabricados de acuerdo a las necesidades específicas de los cuerpos de rescate y emergencias"
-					imageSrc="/features/proteccion3.webp"
+					imageSrc={cld("proteccion3", "c_crop,g_north_west,x_0,y_380,w_3280,h_2460/c_limit,w_1200")}
 				/>
 			</section>
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
-					<p className="text-lg md:text-xl leading-relaxed mb-8 text-justify">
+					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
 						contactando a nuestros especialistas que con gusto atenderán su
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)} hovered>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
 						CONTÁCTANOS
 					</CTAButton>
 				</div>

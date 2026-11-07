@@ -6,7 +6,7 @@ export default function AvisoDePrivacidad() {
 			<div className="md:h-24 h-32 bg-black w-full" />
 
 			<section className="max-w-4xl mx-auto px-6 py-20 text-sm md:text-base leading-relaxed">
-				<h1 className="text-3xl font-bold mb-8 text-[#b01f29]">
+				<h1 className="text-3xl font-bold mb-8 text-[#111111]">
 					Aviso de Privacidad
 				</h1>
 
@@ -44,7 +44,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 						Datos personales y forma de recabarse
 					</h2>
 					<p>
@@ -64,7 +64,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 						Finalidades y transferencia de datos personales
 					</h2>
 					<p>
@@ -82,7 +82,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 						Derechos ARCO y revocación
 					</h2>
 					<p>
@@ -109,7 +109,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">Cookies</h2>
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">Cookies</h2>
 					<p>
 						Utilizamos cookies para mejorar su experiencia de compra. Estas
 						pueden ser desactivadas en su navegador, aunque algunas funciones
@@ -118,7 +118,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 						Modificaciones
 					</h2>
 					<p>
@@ -135,7 +135,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<section className="mb-6">
-					<h2 className="text-xl font-semibold mb-2 text-[#b01f29]">
+					<h2 className="text-xl font-semibold mb-2 text-[#111111]">
 						Contacto y domicilio
 					</h2>
 					<p>

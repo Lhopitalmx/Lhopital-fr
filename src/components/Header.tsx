@@ -9,13 +9,14 @@ import CTAButton from "./CTAButton";
 import Modal from "./Modal";
 import ContactForm from "./ContactForm";
 import NavLink from "./NavLink";
+import { cld, CLD } from "@/lib/cloudinary";
 
 function MobileContactBar({ onClick }: { onClick: () => void }) {
 	return (
-		<div className="md:hidden fixed top-0 left-0 w-full h-[40.5px] bg-[#272828] z-40 shadow-lg flex items-center justify-center">
+		<div className="md:hidden fixed top-0 left-0 w-full h-[40.5px] bg-[#111111] border-b border-[#B01F29] z-40 shadow-lg flex items-center justify-center">
 			<button
 				onClick={onClick}
-				className="bg-gradient-to-r from-[#5C76B5] via-50% to-[#D1686F] text-transparent bg-clip-text min-h-full font-thin text-xl"
+				className="min-h-full w-full font-[almaq] text-xs font-bold tracking-[0.2em] uppercase text-[#F4F1EC]"
 			>
 				CONTÁCTANOS
 			</button>
@@ -41,7 +42,7 @@ function HeaderContent({
 			{/* Logo */}
 			<Link href="/" scroll className="z-10">
 				<Image
-					src="/LP-escudos/escudo_bw.webp"
+					src={cld(CLD.escudoBw, "w_140")}
 					alt="Logo"
 					width={70}
 					height={70}
@@ -82,6 +83,9 @@ function HeaderContent({
 								<NavLink href="/rescate" className="block hover:underline">
 									Equipo de Rescate
 								</NavLink>
+								<NavLink href="/ventilacion" className="block hover:underline">
+									Equipo de Ventilación
+								</NavLink>
 								<NavLink href="/hazmat" className="block hover:underline">
 									Equipo Hazmat
 								</NavLink>
@@ -93,7 +97,7 @@ function HeaderContent({
 
 			{/* CTA Button */}
 			<div className="hidden md:flex z-10">
-				<CTAButton onClick={onClick} hovered={false}>
+				<CTAButton onClick={onClick} variant="outline">
 					CONTÁCTANOS
 				</CTAButton>
 			</div>
@@ -159,6 +163,13 @@ function MobileMenu({
 						className="hover:underline"
 					>
 						Equipo de Rescate
+					</NavLink>
+					<NavLink
+						href="/ventilacion"
+						onClick={() => setIsOpen(false)}
+						className="hover:underline"
+					>
+						Equipo de Ventilación
 					</NavLink>
 					<NavLink
 						href="/hazmat"

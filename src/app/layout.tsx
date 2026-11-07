@@ -8,19 +8,19 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.lhopital-fr.mx"),
-	title: "Lhopital FR | Equipo de Rescate, HAZMAT y Protección Personal en México",
+	title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 	description:
-		"Distribuidores exclusivos de Trelleborg, Res-Q-Jack, PGI y HexArmor en México. Equipo especializado para rescate técnico, materiales peligrosos y protección personal de bomberos, con certificaciones NFPA y EN.",
+		"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, materiales peligrosos, ventilación y protección personal de bomberos, con certificaciones NFPA y EN.",
 	keywords:
-		"equipo de rescate México, HAZMAT, protección personal bomberos, Trelleborg México, Res-Q-Jack México, PGI, HexArmor, distribuidor equipo bomberos, protección civil",
+		"equipo de rescate México, HAZMAT, protección personal bomberos, ventiladores bomberos, Trelleborg México, Res-Q-Jack México, HexArmor, LION, SUPERVAC, distribuidor equipo bomberos, protección civil",
 	authors: [{ name: "Lhopital FR" }],
 	creator: "Lhopital FR",
 	publisher: "Lhopital FR",
 	robots: "index,follow",
 	openGraph: {
-		title: "Lhopital FR | Equipo de Rescate, HAZMAT y Protección Personal en México",
+		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
-			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack, PGI y HexArmor en México. Equipo especializado para rescate técnico, HAZMAT y protección personal de bomberos.",
+			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, HAZMAT, ventilación y protección personal de bomberos.",
 		url: "https://www.lhopital-fr.mx",
 		siteName: "Lhopital FR",
 		locale: "es_MX",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Lhopital FR | Equipo de Rescate, HAZMAT y Protección Personal en México",
+		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
-			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack, PGI y HexArmor en México.",
+			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor.",
 	},
 	
 	verification: {
@@ -68,7 +68,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
 					`}
 				</Script>
 			</head>
-			<body className="flex flex-col bg-white font-[almaq] text-white text-justify">
+			<body className="flex flex-col bg-white font-[almaq] text-white">
 				<LocalBusinessSchema />
 				<Header />
 				<main className="min-h-screen flex-1">{children}</main>

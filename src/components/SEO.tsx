@@ -25,7 +25,7 @@ export function generateSEOMetadata({
     description,
     keywords:
       keywords ||
-      'equipo de rescate, HAZMAT, protección personal bomberos, Trelleborg México, Res-Q-Jack México, PGI, HexArmor, distribuidor equipo bomberos México',
+      'equipo de rescate, HAZMAT, ventilación, protección personal bomberos, Trelleborg México, Res-Q-Jack México, HexArmor, LION, SUPERVAC, distribuidor equipo bomberos México',
     robots: noindex ? 'noindex,nofollow' : 'index,follow',
     openGraph: {
       title: fullTitle,
@@ -69,7 +69,7 @@ export function LocalBusinessSchema() {
     '@type': 'LocalBusiness',
     name: 'Lhopital FR',
     description:
-      'Distribuidor de equipo especializado para rescate técnico, materiales peligrosos (HAZMAT) y protección personal en México. Distribuidores exclusivos de Trelleborg, Res-Q-Jack, PGI y HexArmor.',
+      'Distribuidor de equipo especializado para rescate técnico, materiales peligrosos (HAZMAT), ventilación y protección personal en México. Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC, y distribuidores autorizados de LION y HexArmor.',
     url: 'https://www.lhopital-fr.mx/',
     telephone: '+52-55-9470-5028',
     email: 'contacto@lhopital-fr.mx',
@@ -95,11 +95,10 @@ export function LocalBusinessSchema() {
     brand: [
       { '@type': 'Brand', name: 'Trelleborg' },
       { '@type': 'Brand', name: 'Res-Q-Jack' },
-      { '@type': 'Brand', name: 'PGI' },
       { '@type': 'Brand', name: 'HexArmor' },
       { '@type': 'Brand', name: 'LION' },
-      { '@type': 'Brand', name: 'Genesis Rescue Systems' },
-      { '@type': 'Brand', name: 'Turtle Plastics' },
+      { '@type': 'Brand', name: 'SAVA' },
+      { '@type': 'Brand', name: 'SUPERVAC' },
     ],
     serviceArea: {
       '@type': 'Country',
@@ -115,7 +114,7 @@ export function LocalBusinessSchema() {
             '@type': 'ProductGroup',
             name: 'Equipos de Rescate Técnico',
             description:
-              'Sistemas de estabilización Res-Q-Jack y equipo Genesis para rescate vehicular, estructuras colapsadas y espacios confinados',
+              'Sistemas de estabilización Res-Q-Jack y colchones neumáticos Trelleborg - SAVA para rescate vehicular, estructuras colapsadas y espacios confinados',
           },
         },
         {
@@ -124,7 +123,7 @@ export function LocalBusinessSchema() {
             '@type': 'ProductGroup',
             name: 'Protección Personal',
             description:
-              'Trajes PGI, equipo LION y guantes HexArmor para bomberos y personal de emergencias, con certificaciones NFPA y EN',
+              'Equipo LION y guantes HexArmor para bomberos y personal de emergencias, con certificaciones NFPA y EN',
           },
         },
         {
@@ -134,6 +133,15 @@ export function LocalBusinessSchema() {
             name: 'Materiales Peligrosos (HAZMAT)',
             description:
               'Equipos Trelleborg para sellado, contención y manejo de materiales peligrosos',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'ProductGroup',
+            name: 'Ventilación',
+            description:
+              'Ventiladores SUPERVAC de presión positiva y negativa, para espacios confinados, uso industrial y gran escala',
           },
         },
       ],

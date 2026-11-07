@@ -7,29 +7,25 @@ import FeatureIntro from "@/components/FeatureIntro";
 import HeroContainer from "@/components/HeroContainer";
 import Modal from "@/components/Modal";
 import { useState } from "react";
+import { cld } from "@/lib/cloudinary";
 import Image from "next/image";
 
 const brandLogos = [
     {
         name: "Res-Q-Jack",
-        src: "/partners/resqjay-logo.webp",
+        src: cld("2021_RQJ_Logo-with_tag-light_BG", "e_trim/c_limit,w_600"),
         invert: true,
 		size: "h-16 md:h-20 w-52 md:w-60",
     },
     {
         name: "Trelleborg",
-        src: "/partners/trelleborg-logo.webp",
+        src: cld("trelleborg-logo"),
         invert: true,
     },
     {
         name: "Sava",
-        src: "/partners/Sava.png",
+        src: cld("Sava", "c_limit,w_600"),
         invert: false,
-    },
-    {
-        name: "Génesis",
-        src: "/partners/gsr_hrz_logomark_white_red.png",
-        invert: true,
     },
 ];
 
@@ -42,7 +38,7 @@ export default function Rescue() {
 
 	return (
 		<>
-			<HeroContainer title="Rescate Técnico" imageSrc="/banners/rescate.webp">
+			<HeroContainer title="Rescate Técnico" imageSrc={cld("rescate_hero", "c_limit,w_2400")}>
 				<p>
 					Contamos con equipos para las diferentes especialidades que atienden
 					los profesionales. Equipos para rescate vehicular liviano y pesado,
@@ -54,7 +50,7 @@ export default function Rescue() {
                     {brandLogos.map((brand) => (
                         <div
                             key={brand.name}
-                            className={`relative ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
+                            className={`relative last:col-span-2 last:justify-self-center ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
                         >
                             <Image
                                 src={brand.src}
@@ -75,44 +71,50 @@ export default function Rescue() {
 			<FeatureIntro
 				title="Todos nuestros equipos cuentan con las certificaciones más importantes a nivel mundial"
 				subtitle="como NFPA y EN que garantizan el buen funcionamiento y rendimiento de los equipos aún en los escenarios más complejos."
-			imageSrc="/items/rescate.webp"
+			imageSrc={cld("rescate_items", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
 			alt="Rescate Item"
 				// catalogOption={catalogOptions}
 			/>
-			<section className="w-full bg-white text-red-600 py-20 px-6 md:px-20 ">
-				<h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
+			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
+				<h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS ESPECIALIZADOS EN RESCATE TÉCNICO:
-				</h1>
+				</h2>
 				<FeatureAnimated
 					direction="left"
-					title="Equipo diseñado con enfoque especializado"
-					description="de acuerdo con las necesidades de los usuarios y de las operaciones de rescate, 
-						fabricados con alta tecnología bajo los requerimientos de NFPA 1960, EN 13731, EN 13204, EN16471 y EN16473."
-					imageSrc="/features/rescate1.webp"
+					title="Trelleborg® Sistemas de levantamiento y estabilización"
+					description="Ya sea para levantamiento de estructuras colapsadas, operaciones USAR o rescate vehicular pesado.
+					Los sistemas SAVA de Trelleborg están diseñados para el trabajo pesado y cuentan con certificación EN."
+					imageSrc={cld("rescate1", "c_limit,w_1800")}
+					square
+					imagePosition="object-[15%_50%]"
 				/>
 
 				<FeatureAnimated
 					direction="right"
-					title="Equipos para recuperación"
-					description="de vehículos comerciales, vehículos de transporte y todo lo referente a rescate vehicular"
-					imageSrc="/features/rescate2.webp"
+					title="Res-Q-Jack® Sistemas de estabilización"
+					description="Para rescate en Zanjas o Rescate vehicular liviano y pesado. Los equipos de Res-Q-Jack® son la 
+					mejor opción para estabilizar los escenarios más complejos y trabajar de manera segura."
+					imageSrc={cld("estabilizacion", "c_crop,g_north_west,x_0,y_820,w_3213,h_3213/c_limit,w_1200")}
+					square
 				/>
 
 				<FeatureAnimated
 					direction="left"
-					title="Sistemas de estabilización"
-					description="primaria y secundaria para rescate en estructuras colapsadas, trincheras y espacios confinados"
-					imageSrc="/features/stabilization-new.webp"
+					title="Trelleborg® Equipos para recuperación"
+					description="Para vehículos comerciales, de transporte o muy voluminosos, los equipos de baja presión 
+					de SAVA de Trelleborg® son la mejor opción para recuperar carga de manera segura sin aumentar el daño de esta"
+					imageSrc={cld("rescate2")}
+					square
 				/>
 			</section>
 			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
-					<p className="text-lg md:text-xl leading-relaxed mb-8 text-justify">
+					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
 						contactando a nuestros especialistas que con gusto atenderán su
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)} hovered>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
 						CONTÁCTANOS
 					</CTAButton>
 				</div>

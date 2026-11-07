@@ -8,8 +8,13 @@ interface FeatureAnimatedProps {
 	direction: "left" | "right";
 	title: string;
 	description: string;
-	imageSrc: string;
+	// Sin imagen se muestra un recuadro gris del mismo tamaño.
+	imageSrc?: string;
 	alt?: string;
+	// Marco cuadrado para que todas las fotos de una sección midan lo mismo.
+	square?: boolean;
+	// Qué parte de la foto se conserva al recortarla (clase de Tailwind, p. ej. "object-[60%_50%]").
+	imagePosition?: string;
 }
 
 export default function FeatureAnimated({
@@ -18,6 +23,8 @@ export default function FeatureAnimated({
 	description,
 	imageSrc,
 	alt = "",
+	square = false,
+	imagePosition = "object-center",
 }: FeatureAnimatedProps) {
 	const isLeft = direction === "left";
 
@@ -34,14 +41,23 @@ export default function FeatureAnimated({
 						isLeft ? "md:order-1" : "md:order-2"
 					}`}
 				>
-					<Image
-						src={imageSrc}
-						alt={alt || title}
-						width={800}
-						height={600}
-						unoptimized
-						className="w-full h-auto object-cover max-w-full"
-					/>
+					{imageSrc ? (
+						<Image
+							src={imageSrc}
+							alt={alt || title}
+							width={800}
+							height={600}
+							unoptimized
+							className={`w-full max-w-full object-cover ${
+								square ? "aspect-square" : "h-auto"
+							} ${imagePosition}`}
+						/>
+					) : (
+						<div
+							className={`w-full bg-neutral-200 ${square ? "aspect-square" : "aspect-[4/3]"}`}
+							aria-hidden="true"
+						/>
+					)}
 				</motion.div>
 
 				{/* Text Card */}
@@ -54,7 +70,8 @@ export default function FeatureAnimated({
 						isLeft ? "md:-ml-20 md:order-2" : "md:-mr-20 md:order-1"
 					}`}
 				>
-					<h3 className="text-2xl md:text-3xl font-bold text-red-600 mb-4">
+					<span aria-hidden="true" className="block w-10 h-0.5 bg-[#B01F29] mb-4" />
+					<h3 className="text-2xl md:text-3xl font-bold text-[#111111] mb-4">
 						{title}
 					</h3>
 					<p className="text-base md:text-lg text-[#333] font-light leading-relaxed">

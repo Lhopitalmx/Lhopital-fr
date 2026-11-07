@@ -4,34 +4,47 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useRef, useEffect, JSX } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
+import { cld } from "@/lib/cloudinary";
+
+// Fotos de los recuadros en Cloudinary, limitadas a 900 px de ancho para que carguen rápido.
+const cardImage = (publicId: string) => cld(publicId, "c_limit,w_900");
 
 type ShowcaseItem = {
 	title: string;
 	description: string;
-	image: string;
-	url: string;
+	// Sin imagen se muestra un fondo oscuro liso.
+	image?: string;
+	// Sin url el recuadro no es un enlace y el botón dice "PRÓXIMAMENTE".
+	url?: string;
 };
 
 const items: ShowcaseItem[] = [
 	{
 		title: "EPP",
 		description:
-			"Equipos de protección personal para bomberos y rescatistas profesionales.",
-		image: "/showcase/pp.webp",
+			"Equipos de protección personal LION® para bomberos y rescatistas profesionales.",
+		image: cardImage("pp"),
 		url: "/proteccion-personal",
 	},
 	{
 		title: "RESCATE",
 		description:
-			"Equipo para rescate vehicular, rescate pesado, rescate en estructuras colapsadas y estabilización primaria y secundaría.",
-		image: "/showcase/rescate.webp",
+			"Equipo para estabilización vehicular y rescate pesado Res-Q-Jack®. Equipos para levantamiento y estabilización de estructuras colapsadas SAVA® Trelleborg®.",
+		image: cardImage("rescate"),
 		url: "/rescate",
+	},
+	{
+		title: "VENTILACIÓN",
+		description:
+			"Equipos de Ventilación positiva, negativa, espacios confinados para bomberos profesionales, para industria y aeropuertos SUPERVAC®.",
+		image: cardImage("ventilacion"),
+		url: "/ventilacion",
 	},
 	{
 		title: "HAZMAT",
 		description:
-			"Equipos para contención de materiales peligrosos y control de derrames.",
-		image: "/showcase/hazmat.webp",
+			"Equipos para contención de materiales peligrosos y control de derrames SAVA® Trelleborg®.",
+		image: cardImage("hazmat"),
 		url: "/hazmat",
 	},
 ];
@@ -50,13 +63,13 @@ export default function EquipmentShowcase(): JSX.Element {
 		{/* Background */}
 		<div className="absolute inset-0 -z-10">
 		<Image
-			src="/showcase/burntBrickWall.webp"
+			src={cld("burntBrickWall")}
 			alt="Fondo equipos"
 				fill
 				unoptimized
 				className="object-cover"
 			/>
-			<div className="absolute inset-0 bg-[#b01f29]/70" />
+			<div className="absolute inset-0 bg-[#111111]/75" />
 		</div>			{/* Section Title */}
 			<motion.div
 				ref={sectionRef}
@@ -79,7 +92,7 @@ export default function EquipmentShowcase(): JSX.Element {
 					Contamos con las mejores marcas en el mercado
 				</p>
 
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
 					{items.map((item, i) => (
 						<Card key={i} item={item} delay={i * 0.2} />
 					))}
@@ -115,22 +128,24 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 				},
 			}}
 		>
-			<Link
-				href={item.url}
-				className="block w-full h-full"
+			<CardWrapper
+				url={item.url}
 				onMouseEnter={() => setHovered(true)}
 				onMouseLeave={() => setHovered(false)}
 			>
 				<div className="flex flex-col shadow-lg overflow-hidden">
 					{/* Image */}
-					<div className="relative w-full h-[500px]">
-					<Image
-						src={item.image}
-						alt={item.title}
-						fill
-						unoptimized
-						className="object-cover object-center"
-					/>						{/* Overlay (desktop only) */}
+					<div className="relative w-full h-[500px] bg-neutral-900">
+						{item.image && (
+							<Image
+								src={item.image}
+								alt={item.title}
+								fill
+								unoptimized
+								className="object-cover object-center"
+							/>
+						)}
+						{/* Overlay (desktop only) */}
 						<div className="hidden md:block absolute inset-4 z-10 overflow-hidden">
 							<div
 								className="absolute inset-0 bg-black/50 transition-all duration-500 ease-in-out"
@@ -153,13 +168,38 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 					</div>
 
 					{/* CTA Button */}
-					<div className="bg-[#b01f29] text-white text-center py-4 text-lg font-bold tracking-wide">
-						<span className="flex items-center justify-center gap-2">
-							<span className="text-2xl">+</span> VER MÁS
-						</span>
+					<div className="bg-[#111111] border-t-2 border-[#B01F29] text-[#F4F1EC] text-center py-4 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group-hover:bg-[#B01F29]">
+						{item.url ? (
+							<span className="flex items-center justify-center gap-2">
+								<span className="text-2xl">+</span> VER MÁS
+							</span>
+						) : (
+							<span className="flex items-center justify-center py-1">PRÓXIMAMENTE</span>
+						)}
 					</div>
 				</div>
-			</Link>
+			</CardWrapper>
 		</motion.div>
+	);
+}
+
+function CardWrapper({
+	url,
+	children,
+	onMouseEnter,
+	onMouseLeave,
+}: {
+	url?: string;
+	children: React.ReactNode;
+	onMouseEnter: () => void;
+	onMouseLeave: () => void;
+}) {
+	const props = { className: "group block w-full h-full", onMouseEnter, onMouseLeave };
+	return url ? (
+		<Link href={url} {...props}>
+			{children}
+		</Link>
+	) : (
+		<div {...props}>{children}</div>
 	);
 }
