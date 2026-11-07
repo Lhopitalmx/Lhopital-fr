@@ -1,6 +1,7 @@
 "use client";
 
 import FeatureAnimated from "@/components/FeatureAnimated";
+import FeatureIntro from "@/components/FeatureIntro";
 import HeroContainer from "@/components/HeroContainer";
 import CTAButton from "@/components/CTAButton";
 import Modal from "@/components/Modal";
@@ -9,13 +10,18 @@ import ContactoForm from "@/components/ContactForm";
 import Image from "next/image";
 import { cld } from "@/lib/cloudinary";
 
-// TODO: faltan la foto del hero y las fotos de cada recuadro (imageSrc).
 export default function Ventilacion() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	return (
 		<>
-			<HeroContainer title="Ventilación">
+			<HeroContainer
+				title="Ventilación"
+				// v-hero ampliada hacia la derecha (relleno generado por Cloudinary) para que el
+				// ventilador quede completo en la mitad izquierda y el texto caiga sobre el fondo.
+				imageSrc={cld("v-hero", "c_pad,ar_1.9,g_west,b_gen_fill/c_limit,w_2400")}
+				imagePosition="object-[37%_50%] md:object-right"
+			>
 				<p className="text-lg md:text-2xl font-light max-w-xl">
 					Equipos de ventilación de presión positiva, negativa, ventilación
 					para espacios confinados, ventilación industrial.
@@ -32,6 +38,12 @@ export default function Ventilacion() {
 					/>
 				</div>
 			</HeroContainer>
+			<FeatureIntro
+				title="Todos nuestros ventiladores cuentan con certificación AMCA"
+				subtitle="(Air Movement and Control Association), garantizando el desempeño real de cada equipo."
+				imageSrc={cld("ventilacion_items", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
+				alt="Ventiladores SUPERVAC"
+			/>
 
 			<section className="w-full bg-white py-20 px-6 md:px-20">
 				<h1 className="text-3xl md:text-5xl text-[#111111] font-bold text-center mb-10">
@@ -41,18 +53,21 @@ export default function Ventilacion() {
 					direction="left"
 					title="Ventilación positiva, negativa y espacios confinados"
 					description="SUPERVAC® para bomberos profesionales, eléctricos y de gasolina con certificación AMCA 240-22."
+					imageSrc={cld("ventilacion1", "c_limit,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="right"
 					title="Ventilación de grado industrial"
 					description="SUPERVAC® con motores TEAO (Totally Enclosed Air Over – Totalmente cerrados, refrigerados por aire externo) de velocidad variable, motores eléctricos para atmósferas peligrosas, neumáticos o de motor a gasolina."
+					imageSrc={cld("ventilacion2", "c_limit,w_1200")}
 				/>
 
 				<FeatureAnimated
 					direction="left"
 					title="Ventiladores a gran escala"
 					description="SUPERVAC® para ventilación de terminales aeroportuarias, grandes bodegas, estructuras comerciales y edificios de gran altura."
+					imageSrc={cld("ventilacion3", "c_limit,w_1200")}
 				/>
 			</section>
 
