@@ -13,6 +13,7 @@ import {
 	Cpu,
 } from "lucide-react";
 import Image from "next/image";
+import { cld } from "@/lib/cloudinary";
 import { useState } from "react";
 
 export default function NosotrosPage() {
@@ -27,7 +28,7 @@ export default function NosotrosPage() {
 	];
 	return (
 		<>
-			<HeroContainer title="Nosotros" imageSrc="/banners/nosotros1.webp">
+			<HeroContainer title="Nosotros" imageSrc={cld("nosotros1", "c_limit,w_2400")}>
 				<p className="mb-4">
 					<strong>Lhopital FR</strong> se dedica a ofrecer soluciones integrales para profesionales 
 					en Protección Civil, Bomberos y Rescate en México, con el objetivo de facilitar las tareas
@@ -80,7 +81,7 @@ export default function NosotrosPage() {
 			{/* Background image + red overlay */}
 		<div className="absolute inset-0 -z-10">
 			<Image
-				src="/showcase/burntBrickWall.webp"
+				src={cld("burntBrickWall")}
 				alt="Fondo de valores"
 				fill
 				unoptimized

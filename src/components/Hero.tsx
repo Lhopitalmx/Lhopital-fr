@@ -4,6 +4,7 @@ import { Cormorant_Garamond } from "next/font/google";
 import Modal from "./Modal";
 import ContactForm from "./ContactForm";
 import { useState } from "react";
+import { cldVideo } from "@/lib/cloudinary";
 
 // Misma cursiva que usa Moto para "The standard"
 const cormorant = Cormorant_Garamond({
@@ -22,13 +23,16 @@ export default function Hero() {
 	return (
 		<section className="relative w-full h-screen overflow-hidden text-white">
 			<video
-				src="/HeroVid.webm"
 				autoPlay
 				muted
 				loop
 				playsInline
+				poster={cldVideo("HeroVid", "jpg", "so_0,q_auto,c_limit,w_1920")}
 				className="absolute top-0 left-0 w-full h-full object-cover z-0"
-			/>
+			>
+				<source src={cldVideo("HeroVid", "webm")} type="video/webm" />
+				<source src={cldVideo("HeroVid", "mp4")} type="video/mp4" />
+			</video>
 
 			{/* Overlay neutro (sin tinte azul): oscuro a la izquierda y abajo para que el texto respire */}
 			<div

@@ -46,9 +46,9 @@ export default function Ventilacion() {
 			/>
 
 			<section className="w-full bg-white py-20 px-6 md:px-20">
-				<h1 className="text-3xl md:text-5xl text-[#111111] font-bold text-center mb-10">
+				<h2 className="text-3xl md:text-5xl text-[#111111] font-bold text-center mb-10">
 					EQUIPOS DE VENTILACIÓN ESPECIALIZADOS EN:
-				</h1>
+				</h2>
 				<FeatureAnimated
 					direction="left"
 					title="Ventilación positiva, negativa y espacios confinados"

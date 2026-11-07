@@ -63,7 +63,7 @@ export default function EquipmentShowcase(): JSX.Element {
 		{/* Background */}
 		<div className="absolute inset-0 -z-10">
 		<Image
-			src="/showcase/burntBrickWall.webp"
+			src={cld("burntBrickWall")}
 			alt="Fondo equipos"
 				fill
 				unoptimized

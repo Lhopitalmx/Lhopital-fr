@@ -13,18 +13,18 @@ import Image from "next/image";
 const brandLogos = [
     {
         name: "Res-Q-Jack",
-        src: "/partners/resqjay-logo.webp",
+        src: cld("2021_RQJ_Logo-with_tag-light_BG", "e_trim/c_limit,w_600"),
         invert: true,
 		size: "h-16 md:h-20 w-52 md:w-60",
     },
     {
         name: "Trelleborg",
-        src: "/partners/trelleborg-logo.webp",
+        src: cld("trelleborg-logo"),
         invert: true,
     },
     {
         name: "Sava",
-        src: "/partners/Sava.png",
+        src: cld("Sava", "c_limit,w_600"),
         invert: false,
     },
 ];
@@ -38,7 +38,7 @@ export default function Rescue() {
 
 	return (
 		<>
-			<HeroContainer title="Rescate Técnico" imageSrc="/banners/rescate.webp">
+			<HeroContainer title="Rescate Técnico" imageSrc={cld("rescate_hero", "c_limit,w_2400")}>
 				<p>
 					Contamos con equipos para las diferentes especialidades que atienden
 					los profesionales. Equipos para rescate vehicular liviano y pesado,
@@ -76,9 +76,9 @@ export default function Rescue() {
 				// catalogOption={catalogOptions}
 			/>
 			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
-				<h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
+				<h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS ESPECIALIZADOS EN RESCATE TÉCNICO:
-				</h1>
+				</h2>
 				<FeatureAnimated
 					direction="left"
 					title="Trelleborg® Sistemas de levantamiento y estabilización"

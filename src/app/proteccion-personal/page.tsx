@@ -13,11 +13,11 @@ import { cld } from "@/lib/cloudinary";
 const brandLogos = [
 	{
 		name: "LION",
-		src: "/partners/lion_corporate_logo_tagline_reverse.png",
+		src: cld("lion_corporate_logo_tagline_reverse", "c_limit,w_600"),
 	},
 	{
 		name: "HexArmor",
-		src: "/partners/EXT-2.png",
+		src: cld("EXT-2", "c_limit,w_600"),
 	},
 ];
 
@@ -70,9 +70,9 @@ export default function PersonalProtection() {
 				// catalogOption={catalogOptions}
 			/>
 			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
-				<h1 className="text-3xl md:text-5xl font-bold text-center mb-10">
+				<h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS DE PROTECCIÓN PERSONAL ESPECIALIZADOS EN:
-				</h1>
+				</h2>
 				<FeatureAnimated
 					direction="left"
 					title="EPP LION®"

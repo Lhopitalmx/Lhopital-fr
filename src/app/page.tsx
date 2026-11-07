@@ -3,6 +3,9 @@ import Hero from "@/components/Hero";
 import Partners from "@/components/Partners";
 import EquipmentShowcase from "@/components/EquipmentShowcase";
 import ContactForm from "@/components/ContactForm";
+import { metadata as homeMetadata } from "./metadata";
+
+export const metadata = homeMetadata;
 
 export default function Home() {
 	return (

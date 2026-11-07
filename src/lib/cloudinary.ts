@@ -8,6 +8,11 @@ export function cld(publicId: string, transforms?: string): string {
 	return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${t}/${publicId}`;
 }
 
+// URL de un video. `format` elige el archivo que entrega Cloudinary (webm, mp4 o jpg para la portada).
+export function cldVideo(publicId: string, format: "webm" | "mp4" | "jpg", transforms = "q_auto,c_limit,w_1920"): string {
+	return `https://res.cloudinary.com/${CLOUD_NAME}/video/upload/${transforms}/${publicId}.${format}`;
+}
+
 // Public IDs en Cloudinary (carpeta raíz).
 export const CLD = {
 	escudoBw: "escudo_bw_fr",
