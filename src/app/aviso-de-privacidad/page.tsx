@@ -231,7 +231,7 @@ export default function AvisoDePrivacidad() {
 				</section>
 
 				<p className="mt-8 text-xs italic text-neutral-500">
-					Última actualización: 7 de noviembre de 2026
+					Última actualización: 9 de noviembre de 2026
 				</p>
 			</section>
 		</main>

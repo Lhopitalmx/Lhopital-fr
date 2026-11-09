@@ -23,15 +23,6 @@ const brandLogos = [
 
 export default function PersonalProtection() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	// const catalogOptions = [
-	// 	{
-	// 		label: "Catálogo BarriAire-Carbon",
-	// 		file: "/catalogues/pgi-hood-carbon.pdf",
-	// 	},
-	// 	{ label: "Catálogo BarriAire-Gold", file: "/catalogues/pgi-hood-gold.pdf" },
-	// 	{ label: "Catálogo PGI-Fireline-Suits", file: "/catalogues/pgi-suits.pdf" },
-	// 	{ label: "Catálogo HexArmor", file: "/catalogues/HEXARMOR-F&R.pdf" },
-	// ];
 
 	return (
 		<>

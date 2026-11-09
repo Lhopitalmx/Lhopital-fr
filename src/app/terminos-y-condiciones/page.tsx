@@ -70,7 +70,7 @@ const sections: Section[] = [
 			"El SITIO WEB, incluyendo su código fuente, textos, imágenes, videos, logotipos, combinaciones de colores, estructura, diseño y demás elementos distintivos, es propiedad del TITULAR o le ha sido debidamente licenciado, y está protegido por la legislación mexicana e internacional en materia de propiedad intelectual e industrial. Queda prohibida su reproducción, distribución o difusión con fines comerciales, por cualquier medio, sin autorización expresa del TITULAR.",
 			"Las marcas y logotipos de los fabricantes que aparecen en el SITIO WEB pertenecen a sus respectivos titulares y se utilizan únicamente para identificar los productos que el TITULAR distribuye.",
 			"El USUARIO se obliga a no suprimir, alterar o manipular ningún elemento del SITIO WEB, ni a realizar acciones que pongan en riesgo la seguridad de sus archivos o bases de datos.",
-			"Si el USUARIO o un tercero considera que algún contenido del SITIO WEB vulnera sus derechos de propiedad intelectual o industrial, deberá comunicarlo de inmediato al TITULAR a través de contacto@lhopital.mx.",
+			"Si el USUARIO o un tercero considera que algún contenido del SITIO WEB vulnera sus derechos de propiedad intelectual o industrial, deberá comunicarlo de inmediato al TITULAR a través de contacto@lhopital-fr.mx.",
 		],
 	},
 	{
@@ -110,7 +110,7 @@ const sections: Section[] = [
 		title: "Décima Segunda. Modificaciones y contacto.",
 		content: [
 			"El TITULAR podrá modificar los presentes TÉRMINOS Y CONDICIONES en cualquier momento. Las modificaciones entrarán en vigor a partir de su publicación en el SITIO WEB con su fecha de actualización, por lo que se recomienda revisarlos periódicamente.",
-			"Para cualquier duda sobre los presentes TÉRMINOS Y CONDICIONES: contacto@lhopital.mx · +52 (55) 9462 1951 · Lunes a viernes 11:00–14:00 y 16:00–19:00 · Sábado 11:00–14:00.",
+			"Para cualquier duda sobre los presentes TÉRMINOS Y CONDICIONES: contacto@lhopital-fr.mx · +52 (55) 9462 1951 · Lunes a viernes 11:00–14:00 y 16:00–19:00 · Sábado 11:00–14:00.",
 		],
 	},
 ];
