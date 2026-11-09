@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { ContactEmail } from "@/components/ContactEmail";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const submissions: Record<string, number> = {};
 
 export async function POST(req: Request) {
@@ -47,6 +46,8 @@ export async function POST(req: Request) {
 			: process.env.RESEND_FROM_EMAIL_FALLBACK;
 
 	try {
+		// Se crea aquí (no al cargar el módulo): Resend 6 falla si no hay clave, y en el build no la hay.
+		const resend = new Resend(process.env.RESEND_API_KEY);
 		const result = await resend.emails.send({
 			from: fromEmail!,
 			to: [process.env.RESEND_TO_EMAIL!],
