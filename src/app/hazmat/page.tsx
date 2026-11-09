@@ -25,9 +25,6 @@ const brandLogos = [
 
 export default function Hazmat() {
 	const [isModalOpen, setIsModalOpen] = useState(false);
-	// const catalogOption = [
-	// 	{ label: "Catálogo Hazmat PGI", file: "/catalogues/rescue-catalog.pdf" },
-	// ];
 
 	return (
 		<>
