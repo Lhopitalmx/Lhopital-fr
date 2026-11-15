@@ -69,7 +69,7 @@ export default function EquipmentShowcase(): JSX.Element {
 				unoptimized
 				className="object-cover"
 			/>
-			<div className="absolute inset-0 bg-[#111111]/75" />
+			<div className="absolute inset-0 bg-ink/75" />
 		</div>			{/* Section Title */}
 			<motion.div
 				ref={sectionRef}
@@ -155,7 +155,7 @@ function Card({ item, delay }: { item: ShowcaseItem; delay: number }) {
 					</div>
 
 					{/* CTA Button */}
-					<div className="bg-[#111111] border-t-2 border-[#B01F29] text-[#F4F1EC] text-center py-4 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group-hover:bg-[#B01F29]">
+					<div className="bg-ink border-t-2 border-fr-red text-bone text-center py-4 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase transition-colors duration-300 group-hover:bg-fr-red">
 						{item.url ? (
 							<span className="flex items-center justify-center gap-2">
 								<span className="text-2xl">+</span> VER MÁS

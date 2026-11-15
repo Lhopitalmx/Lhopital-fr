@@ -64,7 +64,7 @@ const socialLinks = [
 
 const Footer = () => {
 	return (
-		<footer className="bg-black border-t border-[#b01f29] text-white text-sm py-8 px-4">
+		<footer className="bg-black border-t border-fr-red text-white text-sm py-8 px-4">
 			<div className="max-w-7xl mx-auto">
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center text-center">
 					{/* Logo */}
@@ -96,7 +96,7 @@ const Footer = () => {
 							href="https://www.lhopitalcorp.mx"
 							target="_blank"
 							rel="noopener noreferrer"
-							className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70 hover:text-[#b01f29] transition-colors"
+							className="mt-2 text-xs uppercase tracking-[0.2em] text-white/70 hover:text-fr-red transition-colors"
 						>
 							Corporativo
 						</a>
@@ -111,7 +111,7 @@ const Footer = () => {
 								target="_blank"
 								rel="noopener noreferrer"
 								aria-label={social.label}
-								className="text-white hover:text-[#b01f29] transition-colors"
+								className="text-white hover:text-fr-red transition-colors"
 							>
 								{social.icon}
 							</a>

@@ -11,6 +11,12 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        // Paleta Lhopital FR (diseno-lhopital-fr.md). Usar estos tokens en lugar de hex sueltos.
+        "fr-red": "#B01F29",
+        bone: "#F4F1EC",
+        ink: "#111111",
+        gold: "#C9A961", // dorado de la familia Lhopital; solo en el hero de inicio
+        ivory: "#FAF9F6",
       },
     },
   },

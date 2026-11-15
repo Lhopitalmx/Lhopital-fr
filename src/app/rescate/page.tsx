@@ -75,7 +75,7 @@ export default function Rescue() {
 			alt="Rescate Item"
 				// catalogOption={catalogOptions}
 			/>
-			<section className="w-full bg-white text-[#111111] py-20 px-6 md:px-20 ">
+			<section className="w-full bg-white text-ink py-20 px-6 md:px-20 ">
 				<h2 className="text-3xl md:text-5xl font-bold text-center mb-10">
 					EQUIPOS ESPECIALIZADOS EN RESCATE TÉCNICO:
 				</h2>
@@ -107,7 +107,7 @@ export default function Rescue() {
 					square
 				/>
 			</section>
-			<section className="bg-[#FAF9F6] px-6 py-10 text-center text-black">
+			<section className="bg-ivory px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
 					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones

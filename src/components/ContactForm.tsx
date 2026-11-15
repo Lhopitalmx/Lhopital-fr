@@ -165,7 +165,7 @@ export default function ContactoForm() {
 		        ${
 			        !isValid || isSubmitting
 			        	? "bg-gray-300 text-gray-600 cursor-not-allowed"
-			        	: "bg-[#111111] text-[#F4F1EC] hover:bg-[#B01F29]"
+			        	: "bg-ink text-bone hover:bg-fr-red"
 		        }`}
 			>
 				{isSubmitting ? "Enviando..." : "Enviar mensaje"}
