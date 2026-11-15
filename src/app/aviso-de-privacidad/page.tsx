@@ -2,11 +2,11 @@
 
 import type { ReactNode } from "react";
 
-const link = "underline text-[#b01f29]";
+const link = "underline text-fr-red";
 
 function H2({ children }: { children: ReactNode }) {
 	return (
-		<h2 className="text-xl font-semibold mb-2 text-[#111111]">{children}</h2>
+		<h2 className="text-xl font-semibold mb-2 text-ink">{children}</h2>
 	);
 }
 
@@ -32,7 +32,7 @@ export default function AvisoDePrivacidad() {
 			<div className="md:h-24 h-32 bg-black w-full" />
 
 			<section className="max-w-4xl mx-auto px-6 py-20 text-sm md:text-base leading-relaxed">
-				<h1 className="text-3xl font-bold mb-8 text-[#111111]">
+				<h1 className="text-3xl font-bold mb-8 text-ink">
 					Aviso de Privacidad
 				</h1>
 

@@ -13,10 +13,10 @@ import { cld, CLD } from "@/lib/cloudinary";
 
 function MobileContactBar({ onClick }: { onClick: () => void }) {
 	return (
-		<div className="md:hidden fixed top-0 left-0 w-full h-[40.5px] bg-[#111111] border-b border-[#B01F29] z-40 shadow-lg flex items-center justify-center">
+		<div className="md:hidden fixed top-0 left-0 w-full h-[40.5px] bg-ink border-b border-fr-red z-40 shadow-lg flex items-center justify-center">
 			<button
 				onClick={onClick}
-				className="min-h-full w-full font-[almaq] text-xs font-bold tracking-[0.2em] uppercase text-[#F4F1EC]"
+				className="min-h-full w-full font-[almaq] text-xs font-bold tracking-[0.2em] uppercase text-bone"
 			>
 				CONTÁCTANOS
 			</button>

@@ -8,7 +8,7 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
 	metadataBase: new URL("https://www.lhopital-fr.mx"),
-	title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
+	title: "Lhopital FR | Equipo de bomberos, rescate, HAZMAT, Ventilación y Protección Personal en México",
 	description:
 		"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, materiales peligrosos, ventilación y protección personal de bomberos, con certificaciones NFPA y EN.",
 	keywords:
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 	publisher: "Lhopital FR",
 	robots: "index,follow",
 	openGraph: {
-		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
+		title: "Lhopital FR | Equipo de bomberos, rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
 			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor. Equipo especializado para rescate técnico, HAZMAT, ventilación y protección personal de bomberos.",
 		url: "https://www.lhopital-fr.mx",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "Lhopital FR | Equipo de Rescate, HAZMAT, Ventilación y Protección Personal en México",
+		title: "Lhopital FR | Equipo de bomberos, rescate, HAZMAT, Ventilación y Protección Personal en México",
 		description:
 			"Distribuidores exclusivos de Trelleborg, Res-Q-Jack y SUPERVAC en México, y distribuidores autorizados de LION y HexArmor.",
 	},

@@ -63,7 +63,7 @@ export default function Modal({ isOpen, onClose, children }: ModalProps) {
 
 					{/* Subtitle */}
 					<div className="mb-6">
-						<h2 className="text-2xl font-bold text-gray-900">Contáctenos</h2>
+						<h2 className="text-2xl font-bold text-gray-900">Contáctanos</h2>
 						<p className="text-gray-600 mt-2 text-base leading-relaxed">
 							Estamos aquí para ayudarte. Completa el siguiente formulario y uno
 							de nuestros especialistas te contactará a la brevedad.

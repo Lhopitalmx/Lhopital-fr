@@ -17,9 +17,9 @@ interface CTAButtonProps {
 }
 
 const VARIANTS: Record<Variant, string> = {
-	solid: "bg-[#111111] text-[#F4F1EC] border border-[#111111] hover:bg-[#B01F29] hover:border-[#B01F29]",
-	light: "bg-[#F4F1EC] text-[#111111] border border-[#F4F1EC] hover:bg-[#B01F29] hover:border-[#B01F29] hover:text-[#F4F1EC]",
-	outline: "bg-transparent text-[#F4F1EC] border border-[#F4F1EC]/60 hover:bg-[#B01F29] hover:border-[#B01F29]",
+	solid: "bg-ink text-bone border border-ink hover:bg-fr-red hover:border-fr-red",
+	light: "bg-bone text-ink border border-bone hover:bg-fr-red hover:border-fr-red hover:text-bone",
+	outline: "bg-transparent text-bone border border-bone/60 hover:bg-fr-red hover:border-fr-red",
 };
 
 export default function CTAButton({

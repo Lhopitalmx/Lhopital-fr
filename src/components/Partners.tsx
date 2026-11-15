@@ -38,7 +38,7 @@ const partners: Partner[] = [
 
 export default function Partners() {
 	return (
-		<section className="py-12 px-4 bg-[#FAF9F6] text-[#111111]">
+		<section className="py-12 px-4 bg-ivory text-ink">
 			<h2 className="text-3xl font-semibold text-center mb-10">
 				Nuestros Socios
 			</h2>

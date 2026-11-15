@@ -49,7 +49,7 @@ export default function NosotrosPage() {
 				<div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
 					{/* Misión */}
 					<div className="flex flex-col items-center">
-						<h2 className="text-[#111111] text-4xl font-semibold mb-4 text-center">
+						<h2 className="text-ink text-4xl font-semibold mb-4 text-center">
 							Misión
 						</h2>
 						<div className="bg-black text-white p-8 w-full h-full">
@@ -63,7 +63,7 @@ export default function NosotrosPage() {
 
 					{/* Visión */}
 					<div className="flex flex-col items-center">
-						<h2 className="text-[#111111] text-4xl font-semibold mb-4 text-center">
+						<h2 className="text-ink text-4xl font-semibold mb-4 text-center">
 							Visión
 						</h2>
 						<div className="bg-black text-white p-8 w-full h-full">
@@ -107,7 +107,7 @@ export default function NosotrosPage() {
 				</div>
 			</section>
 
-			<section className="bg-[#FAF9F6] px-6 py-20 text-center text-black">
+			<section className="bg-ivory px-6 py-20 text-center text-black">
 				<div className="max-w-xl mx-auto">
 					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
 						Le invitamos a conocer más sobre nuestros servicios y soluciones
