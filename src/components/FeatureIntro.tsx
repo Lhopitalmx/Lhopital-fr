@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import CTAButton from "./CTAButton";
 import Modal from "./Modal";
 import ContactForm from "./ContactForm";
@@ -11,6 +12,8 @@ interface FeatureIntroProps {
 	subtitle: string;
 	imageSrc: string;
 	alt?: string;
+	// Optional second action shown under SOLICITAR INFORMACIÓN (e.g. the V-MAX calculator).
+	secondary?: { href: string; label: string };
 }
 
 export default function FeatureIntro({
@@ -18,12 +21,22 @@ export default function FeatureIntro({
 	subtitle,
 	imageSrc,
 	alt = "",
+	secondary,
 }: FeatureIntroProps) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 
 	const handleClick = () => {
 		setIsModalOpen(true);
 	};
+
+	const secondaryLink = secondary && (
+		<Link
+			href={secondary.href}
+			className="inline-flex items-center justify-center px-7 py-3 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase border border-ink text-ink hover:bg-fr-red hover:border-fr-red hover:text-bone transition-colors duration-300"
+		>
+			{secondary.label}
+		</Link>
+	);
 
 	return (
 		<section className="w-full bg-ivory py-16 px-6 md:px-20">
@@ -38,10 +51,11 @@ export default function FeatureIntro({
 					</p>
 
 					{/* Desktop Button */}
-					<div className="hidden md:flex w-full justify-start gap-4">
+					<div className="hidden md:flex flex-col items-start gap-3">
 						<CTAButton onClick={handleClick}>
 							SOLICITAR INFORMACIÓN
 						</CTAButton>
+						{secondaryLink}
 					</div>
 				</div>
 
@@ -56,10 +70,11 @@ export default function FeatureIntro({
 					className="w-full h-auto object-cover"
 				/>
 			</div>				{/* Mobile Button */}
-				<div className="flex md:hidden w-full justify-center mt-4 gap-4 flex-wrap">
+				<div className="flex md:hidden flex-col items-center w-full mt-4 gap-3">
 					<CTAButton onClick={handleClick}>
 						SOLICITAR INFORMACIÓN
 					</CTAButton>
+					{secondaryLink}
 				</div>
 			</div>
 

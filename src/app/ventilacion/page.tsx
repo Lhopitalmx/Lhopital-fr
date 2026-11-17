@@ -8,7 +8,6 @@ import Modal from "@/components/Modal";
 import { useState } from "react";
 import ContactoForm from "@/components/ContactForm";
 import Image from "next/image";
-import Link from "next/link";
 import { cld } from "@/lib/cloudinary";
 
 export default function Ventilacion() {
@@ -44,6 +43,7 @@ export default function Ventilacion() {
 				subtitle="(Air Movement and Control Association), garantizando el desempeño real de cada equipo."
 				imageSrc={cld("ventilacion_items", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
 				alt="Ventiladores SUPERVAC"
+				secondary={{ href: "/ventilacion/calculadora", label: "¿QUÉ VENTILADOR NECESITO?" }}
 			/>
 
 			<section className="w-full bg-white py-20 px-6 md:px-20">
@@ -79,18 +79,9 @@ export default function Ventilacion() {
 						contactando a nuestros especialistas, que con gusto atenderán tu
 						petición.
 					</p>
-					<div className="flex flex-col items-center gap-3">
-						<CTAButton onClick={() => setIsModalOpen(true)}>
-							CONTÁCTANOS
-						</CTAButton>
-						{/* Calculadora de ventilación V-MAX (/ventilacion/calculadora) */}
-						<Link
-							href="/ventilacion/calculadora"
-							className="inline-flex items-center justify-center px-7 py-3 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase border border-ink text-ink hover:bg-fr-red hover:border-fr-red hover:text-bone transition-colors duration-300"
-						>
-							¿QUÉ VENTILADOR NECESITO?
-						</Link>
-					</div>
+					<CTAButton onClick={() => setIsModalOpen(true)}>
+						CONTÁCTANOS
+					</CTAButton>
 				</div>
 			</section>
 
