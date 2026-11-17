@@ -42,10 +42,11 @@ export default function Rescue() {
 			<HeroContainer
 				title="Rescate Técnico"
 				imageSrc={cld("rescate_hero", "c_limit,w_2400")}
-				// Texto más abajo para que el menú Soluciones abierto no se encime con el título;
-				// en pantallas bajas la sección crece en vez de cortar los logos.
+				// En pantallas altas el título queda a la misma altura que en HazMat; en las bajas
+				// nunca sube más que el menú Soluciones abierto (pt-60) y la sección crece.
+				// pb un poco menor que pt compensa la línea de texto extra respecto a HazMat.
 				sectionClassName="md:h-auto md:min-h-screen"
-				contentClassName="md:h-auto md:pt-60 md:pb-16"
+				contentClassName="md:h-auto md:pt-60 md:pb-[216px]"
 			>
 				<p>
 					Contamos con equipos para las diferentes especialidades que atienden
