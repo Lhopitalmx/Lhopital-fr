@@ -15,6 +15,8 @@ const brandLogos = [
         name: "Res-Q-Jack",
         src: cld("2021_RQJ_Logo-with_tag-light_BG", "e_trim/c_limit,w_600"),
         invert: true,
+        // Logo muy horizontal: en la misma caja se ve chico, así que le damos más ancho.
+        size: "h-12 md:h-14 w-44 md:w-52",
     },
     {
         name: "Trelleborg",
@@ -52,9 +54,9 @@ export default function Rescue() {
 					pesados y comerciales.
 				</p>
                 {/* Marcas distribuidas: las tres en una línea, mismo tamaño que en Protección personal */}
-                <div className="flex items-center gap-6 md:gap-8 mt-8 flex-wrap">
+                <div className="flex items-center gap-6 mt-8 flex-wrap">
                     {brandLogos.map((brand) => (
-                        <div key={brand.name} className="relative h-12 md:h-14 w-32 md:w-36">
+                        <div key={brand.name} className={`relative ${brand.size ?? "h-12 md:h-14 w-32 md:w-36"}`}>
                             <Image
                                 src={brand.src}
                                 alt={brand.name}
