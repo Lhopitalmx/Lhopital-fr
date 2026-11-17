@@ -34,19 +34,11 @@ export function ventilate(d: Dims, size: FanSize, mode: FanMode) {
 	return { V, Q, achHour, achMin, minutes };
 }
 
-// Inverse calculation: airflow (m³/h) needed to do TARGET_CHANGES in `targetMin` minutes,
-// and which model/mode combinations reach it, ordered from smallest airflow to largest.
-export function recommend(d: Dims, targetMin: number) {
-	const V = volume(d);
-	const required = (TARGET_CHANGES * V * 60) / targetMin;
-	const options = SIZES.flatMap((size) =>
-		(["hi", "max"] as FanMode[]).map((mode) => {
-			const r = ventilate(d, size, mode);
-			return { size, mode, ...r, ok: r.Q >= required };
-		})
+// Every model/mode combination for a space, ordered from smallest airflow to largest.
+export function compareAll(d: Dims) {
+	return SIZES.flatMap((size) =>
+		(["hi", "max"] as FanMode[]).map((mode) => ({ size, mode, ...ventilate(d, size, mode) }))
 	).sort((a, b) => a.Q - b.Q);
-	const best = options.find((o) => o.ok) ?? null;
-	return { V, required, options, best };
 }
 
 // Formatting helpers (es-MX).
