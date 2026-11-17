@@ -8,6 +8,7 @@ import Modal from "@/components/Modal";
 import { useState } from "react";
 import ContactoForm from "@/components/ContactForm";
 import Image from "next/image";
+import Link from "next/link";
 import { cld } from "@/lib/cloudinary";
 
 export default function Ventilacion() {
@@ -74,13 +75,22 @@ export default function Ventilacion() {
 			<section className="bg-ivory px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
 					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
-						Le invitamos a conocer más sobre nuestros servicios y soluciones
-						contactando a nuestros especialistas que con gusto atenderán su
+						Te invitamos a conocer más sobre nuestros servicios y soluciones
+						contactando a nuestros especialistas, que con gusto atenderán tu
 						petición.
 					</p>
-					<CTAButton onClick={() => setIsModalOpen(true)}>
-						CONTÁCTANOS
-					</CTAButton>
+					<div className="flex flex-col items-center gap-3">
+						<CTAButton onClick={() => setIsModalOpen(true)}>
+							CONTÁCTANOS
+						</CTAButton>
+						{/* Calculadora de ventilación V-MAX (/ventilacion/calculadora) */}
+						<Link
+							href="/ventilacion/calculadora"
+							className="inline-flex items-center justify-center px-7 py-3 font-[almaq] text-xs font-bold tracking-[0.2em] uppercase border border-ink text-ink hover:bg-fr-red hover:border-fr-red hover:text-bone transition-colors duration-300"
+						>
+							¿QUÉ VENTILADOR NECESITO?
+						</Link>
+					</div>
 				</div>
 			</section>
 
