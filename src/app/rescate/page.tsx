@@ -38,7 +38,14 @@ export default function Rescue() {
 
 	return (
 		<>
-			<HeroContainer title="Rescate Técnico" imageSrc={cld("rescate_hero", "c_limit,w_2400")}>
+			<HeroContainer
+				title="Rescate Técnico"
+				imageSrc={cld("rescate_hero", "c_limit,w_2400")}
+				// Texto más abajo para que el menú Soluciones abierto no se encime con el título;
+				// en pantallas bajas la sección crece en vez de cortar los logos.
+				sectionClassName="md:h-auto md:min-h-screen"
+				contentClassName="md:h-auto md:pt-60 md:pb-16"
+			>
 				<p>
 					Contamos con equipos para las diferentes especialidades que atienden
 					los profesionales. Equipos para rescate vehicular liviano y pesado,
