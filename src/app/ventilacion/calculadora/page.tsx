@@ -20,6 +20,7 @@ import {
 	compareAll,
 	fmtNum,
 	fmtTime,
+	splitTime,
 } from "@/lib/ventilacion";
 
 const PRESETS: { label: string; d: Dims }[] = [
@@ -180,6 +181,17 @@ export default function CalculadoraVentilacion() {
 	const fanLabel = (s: FanSize, m: FanMode) => `V-MAX ${s}" · ${MODE_LABEL[m]}`;
 	const maxQ = Math.max(...SIZES.map((s) => FANS[s].max.cmh));
 
+	// The important number: time to renew the atmosphere, shown large.
+	const BigTime = ({ min }: { min: number }) => {
+		const { h, m, s } = splitTime(min);
+		const u = (t: string) => <span className="text-[0.42em] font-light ml-1 text-bone/80">{t}</span>;
+		return (
+			<span className="whitespace-nowrap tabular-nums">
+				{h ? (<>{h}{u("h")} {m}{u("min")}</>) : m ? (<>{m}{u("min")} {s}{u("s")}</>) : (<>{s}{u("s")}</>)}
+			</span>
+		);
+	};
+
 	const dimField = (k: keyof Dims, label: string) => (
 		<label className="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-3 font-bold">
 			{label}
@@ -270,7 +282,8 @@ export default function CalculadoraVentilacion() {
 						<div className="order-1 lg:order-2" ref={resultRef} aria-live="polite">
 							{r ? (
 								<>
-									<p className="text-5xl md:text-7xl font-bold leading-none">V-MAX {size}&quot;</p>
+									<p className="text-sm tracking-[0.2em] uppercase text-bone/60 font-bold">V-MAX {size}&quot;</p>
+									<p className="text-6xl md:text-8xl font-bold leading-none mt-2"><BigTime min={r.minutes} /></p>
 									<p className="text-lg text-bone/80 mt-3">
 										En modo {mode === "max" ? MODE_LABEL.max : MODE_LABEL.hi.toLowerCase()}: se renueva la atmósfera en{" "}
 										<strong className="text-bone">{fmtTime(r.minutes)}</strong>.
