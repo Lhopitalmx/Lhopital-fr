@@ -43,6 +43,7 @@ export default function Ventilacion() {
 				subtitle="(Air Movement and Control Association), garantizando el desempeño real de cada equipo."
 				imageSrc={cld("ventilacion_items", "e_replace_color:FAF9F6:12:FFFFFF/c_limit,w_1200")}
 				alt="Ventiladores SUPERVAC"
+				secondary={{ href: "/ventilacion/calculadora", label: "¿QUÉ VENTILADOR NECESITO?" }}
 			/>
 
 			<section className="w-full bg-white py-20 px-6 md:px-20">
@@ -74,8 +75,8 @@ export default function Ventilacion() {
 			<section className="bg-ivory px-6 py-10 text-center text-black">
 				<div className="max-w-xl mx-auto">
 					<p className="text-lg md:text-xl leading-relaxed mb-8 text-center">
-						Le invitamos a conocer más sobre nuestros servicios y soluciones
-						contactando a nuestros especialistas que con gusto atenderán su
+						Te invitamos a conocer más sobre nuestros servicios y soluciones
+						contactando a nuestros especialistas, que con gusto atenderán tu
 						petición.
 					</p>
 					<CTAButton onClick={() => setIsModalOpen(true)}>

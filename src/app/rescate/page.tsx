@@ -15,7 +15,8 @@ const brandLogos = [
         name: "Res-Q-Jack",
         src: cld("2021_RQJ_Logo-with_tag-light_BG", "e_trim/c_limit,w_600"),
         invert: true,
-		size: "h-16 md:h-20 w-52 md:w-60",
+        // Logo muy horizontal: en la misma caja se ve chico, así que le damos más ancho.
+        size: "h-12 md:h-14 w-44 md:w-52",
     },
     {
         name: "Trelleborg",
@@ -38,20 +39,25 @@ export default function Rescue() {
 
 	return (
 		<>
-			<HeroContainer title="Rescate Técnico" imageSrc={cld("rescate_hero", "c_limit,w_2400")}>
+			<HeroContainer
+				title="Rescate Técnico"
+				imageSrc={cld("rescate_hero", "c_limit,w_2400")}
+				// En pantallas altas el título queda a la misma altura que en HazMat; en las bajas
+				// nunca sube más que el menú Soluciones abierto (pt-60) y la sección crece.
+				// pb un poco menor que pt compensa la línea de texto extra respecto a HazMat.
+				sectionClassName="md:h-auto md:min-h-screen"
+				contentClassName="md:h-auto md:pt-60 md:pb-[216px]"
+			>
 				<p>
 					Contamos con equipos para las diferentes especialidades que atienden
 					los profesionales. Equipos para rescate vehicular liviano y pesado,
 					rescate en estructuras colapsadas (USAR) y recuperación de vehículos
 					pesados y comerciales.
 				</p>
-                {/* Marcas distribuidas */}
-                <div className="grid grid-cols-2 gap-x-10 gap-y-6 mt-8 max-w-md items-center">
+                {/* Marcas distribuidas: las tres en una línea, mismo tamaño que en Protección personal */}
+                <div className="flex items-center gap-6 mt-8 flex-wrap">
                     {brandLogos.map((brand) => (
-                        <div
-                            key={brand.name}
-                            className={`relative last:col-span-2 last:justify-self-center ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
-                        >
+                        <div key={brand.name} className={`relative ${brand.size ?? "h-12 md:h-14 w-32 md:w-36"}`}>
                             <Image
                                 src={brand.src}
                                 alt={brand.name}
