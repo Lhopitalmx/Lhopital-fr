@@ -15,14 +15,12 @@ import {
 	type Dims,
 	type FanMode,
 	type FanSize,
+	volume,
 	ventilate,
-	recommend,
+	compareAll,
 	fmtNum,
 	fmtTime,
-	splitTime,
 } from "@/lib/ventilacion";
-
-type Tab = "need" | "time";
 
 const PRESETS: { label: string; d: Dims }[] = [
 	{ label: "Habitación", d: { L: 4, W: 4, H: 2.5 } },
@@ -30,12 +28,11 @@ const PRESETS: { label: string; d: Dims }[] = [
 	{ label: "Bodega", d: { L: 30, W: 20, H: 6 } },
 	{ label: "Estacionamiento", d: { L: 50, W: 30, H: 3 } },
 ];
-const TIME_PRESETS = [3, 5, 10, 15];
 
-// Positive number in a sensible range, or null while the user is still typing.
+// Number ≥ 0 in a sensible range, or null while the user is still typing.
 const parse = (v: string, max = 500) => {
 	const n = parseFloat(v.replace(",", "."));
-	return Number.isFinite(n) && n > 0 ? Math.min(n, max) : null;
+	return Number.isFinite(n) && n >= 0 ? Math.min(n, max) : null;
 };
 
 const segBtn = (on: boolean) =>
@@ -143,10 +140,9 @@ function Timeline({ minutes }: { minutes: number }) {
 }
 
 export default function CalculadoraVentilacion() {
-	const [tab, setTab] = useState<Tab>("need");
-	const [raw, setRaw] = useState({ L: "6", W: "15", H: "2.4", T: "10" });
-	const [d, setD] = useState<Dims>({ L: 6, W: 15, H: 2.4 });
-	const [target, setTarget] = useState(10);
+	// The space starts empty (0 × 0 × 0) so nobody reads a result for measurements they didn't enter.
+	const [raw, setRaw] = useState({ L: "0", W: "0", H: "0" });
+	const [d, setD] = useState<Dims>({ L: 0, W: 0, H: 0 });
 	const [size, setSize] = useState<FanSize>(16);
 	const [mode, setMode] = useState<FanMode>("hi");
 	const [isModalOpen, setIsModalOpen] = useState(false);
@@ -164,39 +160,25 @@ export default function CalculadoraVentilacion() {
 	const setDim = (k: keyof Dims, v: string) => {
 		setRaw((r) => ({ ...r, [k]: v }));
 		const n = parse(v);
-		if (n) setD((p) => ({ ...p, [k]: n }));
+		if (n !== null) setD((p) => ({ ...p, [k]: n }));
 	};
 	const stepDim = (k: keyof Dims, delta: number) => {
-		const n = Math.max(k === "H" ? 0.5 : 1, Math.round((d[k] + delta) * 10) / 10);
+		const n = Math.max(0, Math.round((d[k] + delta) * 10) / 10);
 		setD((p) => ({ ...p, [k]: n }));
 		setRaw((r) => ({ ...r, [k]: String(n) }));
-	};
-	const setTime = (v: string) => {
-		setRaw((r) => ({ ...r, T: v }));
-		const n = parse(v, 600);
-		if (n) setTarget(n);
 	};
 	const applyPreset = (p: Dims) => {
 		setD(p);
 		setRaw((r) => ({ ...r, L: String(p.L), W: String(p.W), H: String(p.H) }));
 	};
 
-	const rec = recommend(d, target);
-	// Fan shown in the result: the recommended one in "need" mode, the chosen one in "time" mode.
-	const shown = tab === "need" ? rec.best : { size, mode };
-	const r = shown ? ventilate(d, shown.size, shown.mode) : null;
+	// Results only once largo, ancho and alto are all filled in.
+	const valid = d.L > 0 && d.W > 0 && d.H > 0;
+	const V = volume(d);
+	const r = valid ? ventilate(d, size, mode) : null;
+	const options = compareAll(d);
 	const fanLabel = (s: FanSize, m: FanMode) => `V-MAX ${s}" · ${MODE_LABEL[m]}`;
-	const maxQ = Math.max(...SIZES.map((s) => FANS[s].max.cmh), rec.required);
-
-	const BigTime = ({ min }: { min: number }) => {
-		const { h, m, s } = splitTime(min);
-		const u = (t: string) => <span className="text-[0.42em] font-light ml-1 text-bone/80">{t}</span>;
-		return (
-			<span className="whitespace-nowrap tabular-nums">
-				{h ? (<>{h}{u("h")} {m}{u("min")}</>) : m ? (<>{m}{u("min")} {s}{u("s")}</>) : (<>{s}{u("s")}</>)}
-			</span>
-		);
-	};
+	const maxQ = Math.max(...SIZES.map((s) => FANS[s].max.cmh));
 
 	const dimField = (k: keyof Dims, label: string) => (
 		<label className="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-3 font-bold">
@@ -242,16 +224,6 @@ export default function CalculadoraVentilacion() {
 						</div>
 					</div>
 
-					{/* Tabs */}
-					<div className="flex border border-bone/60 mt-10 max-w-2xl" role="tablist">
-						<button role="tab" aria-selected={tab === "need"} className={segBtn(tab === "need")} onClick={() => setTab("need")}>
-							¿Qué modelo necesito?
-						</button>
-						<button role="tab" aria-selected={tab === "time"} className={`${segBtn(tab === "time")} border-l border-bone/60`} onClick={() => setTab("time")}>
-							Tiempo de ventilación
-						</button>
-					</div>
-
 					<div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mt-10 items-start">
 						{/* Controls */}
 						<div className="order-2 lg:order-1 space-y-8">
@@ -272,29 +244,7 @@ export default function CalculadoraVentilacion() {
 								</div>
 							</div>
 
-							{tab === "need" ? (
-								<div>
-									<h2 className="text-xs font-bold tracking-[0.2em] uppercase mb-4">¿En cuánto tiempo quieres ventilarlo?</h2>
-									<label className="grid grid-cols-[5rem_minmax(0,1fr)] items-center gap-3 font-bold">
-										Tiempo
-										<span className="flex border border-bone/40 bg-white">
-											<input inputMode="decimal" value={raw.T} onChange={(e) => setTime(e.target.value)}
-												className="flex-1 w-full min-h-[48px] text-center text-lg font-bold text-ink tabular-nums focus:outline-none focus:ring-2 focus:ring-fr-red" />
-											<span className="self-center px-3 text-sm text-gray-600">min</span>
-										</span>
-									</label>
-									<div className="flex flex-wrap gap-2 mt-4">
-										{TIME_PRESETS.map((t) => (
-											<button key={t} type="button" onClick={() => setTime(String(t))}
-												className={`min-h-[44px] px-4 border text-sm transition-colors duration-300 ${target === t ? "bg-bone text-ink border-bone" : "border-bone/40 hover:bg-fr-red hover:border-fr-red"}`}>
-												{t} min
-											</button>
-										))}
-									</div>
-									<p className="text-sm text-bone/60 mt-3">Tiempo para lograr {TARGET_CHANGES} renovaciones completas de aire.</p>
-								</div>
-							) : (
-								<div className="grid sm:grid-cols-2 gap-6">
+							<div className="grid sm:grid-cols-2 gap-6">
 									<div>
 										<h2 className="text-xs font-bold tracking-[0.2em] uppercase mb-4">Modelo</h2>
 										<div className="flex border border-bone/60">
@@ -314,42 +264,31 @@ export default function CalculadoraVentilacion() {
 										</div>
 									</div>
 								</div>
-							)}
 						</div>
 
 						{/* Result + picture */}
 						<div className="order-1 lg:order-2" ref={resultRef} aria-live="polite">
-							{tab === "need" && rec.best && r ? (
+							{r ? (
 								<>
-									<p className="text-sm tracking-[0.2em] uppercase text-bone/60 font-bold">Te recomendamos</p>
-									<p className="text-5xl md:text-7xl font-bold leading-none mt-2">V-MAX {rec.best.size}&quot;</p>
+									<p className="text-5xl md:text-7xl font-bold leading-none">V-MAX {size}&quot;</p>
 									<p className="text-lg text-bone/80 mt-3">
-										en modo {MODE_LABEL[rec.best.mode].toLowerCase()}: hace {TARGET_CHANGES} renovaciones en{" "}
+										En modo {mode === "max" ? MODE_LABEL.max : MODE_LABEL.hi.toLowerCase()}: se renueva la atmósfera en{" "}
 										<strong className="text-bone">{fmtTime(r.minutes)}</strong>.
 									</p>
 								</>
-							) : tab === "need" ? (
+							) : (
 								<>
-									<p className="text-sm tracking-[0.2em] uppercase text-bone/60 font-bold">Para ese tiempo</p>
-									<p className="text-4xl md:text-5xl font-bold leading-tight mt-2">Ningún V-MAX lo logra solo</p>
+									<p className="text-4xl md:text-5xl font-bold leading-tight">Captura las medidas</p>
 									<p className="text-lg text-bone/80 mt-3">
-										Necesitas {fmtNum(rec.required)} m³/h y el más potente entrega {fmtNum(FANS[20].max.cmh)} m³/h.
-										Contáctanos y evaluamos tu operación contigo.
+										Escribe el largo, ancho y alto del espacio para ver en cuánto tiempo se renueva la atmósfera.
 									</p>
 								</>
-							) : r ? (
-								<>
-									<p className="text-6xl md:text-8xl font-bold leading-none"><BigTime min={r.minutes} /></p>
-									<p className="text-lg text-bone/80 mt-3">para lograr {TARGET_CHANGES} renovaciones completas de aire con el {fanLabel(size, mode)}.</p>
-								</>
-							) : null}
+							)}
 
 							<dl className="grid grid-cols-2 gap-px bg-bone/15 border border-bone/15 mt-8">
 								{[
-									[`${fmtNum(rec.V, rec.V < 100 ? 1 : 0)} m³`, "Volumen del espacio"],
-									tab === "need"
-										? [`${fmtNum(rec.required)} m³/h`, "Caudal que necesitas"]
-										: [`${fmtNum(r!.Q)} m³/h`, "Caudal del ventilador"],
+									[valid ? `${fmtNum(V, V < 100 ? 1 : 0)} m³` : "—", "Volumen del espacio"],
+									[`${fmtNum(FANS[size][mode].cmh)} m³/h`, "Caudal del ventilador"],
 									[r ? fmtNum(r.achHour, r.achHour < 10 ? 2 : 1) : "—", "Renovaciones por hora"],
 									[r ? fmtTime(r.minutes / TARGET_CHANGES) : "—", "Tiempo por renovación"],
 								].map(([v, l]) => (
@@ -359,7 +298,7 @@ export default function CalculadoraVentilacion() {
 									</div>
 								))}
 							</dl>
-							<div className="mt-6"><Room d={d} /></div>
+							{valid && <div className="mt-6"><Room d={d} /></div>}
 						</div>
 					</div>
 				</div>
@@ -371,28 +310,22 @@ export default function CalculadoraVentilacion() {
 					<div className="w-10 h-[2px] bg-fr-red mb-5" />
 					<h2 className="text-3xl md:text-5xl font-bold">Los V-MAX en tu espacio</h2>
 					<p className="text-lg font-light text-[#333] mt-3 max-w-3xl">
-						{tab === "need"
-							? `La línea roja marca el caudal que necesitas para ${TARGET_CHANGES} renovaciones en ${fmtNum(target, target % 1 ? 1 : 0)} min. Los modelos que la pasan lo logran.`
-							: `Caudal de cada modelo y tiempo para renovar la atmósfera en el espacio que capturaste.`}
+						Caudal de cada modelo y tiempo para renovar la atmósfera en el espacio que capturaste.
 					</p>
 					<div className="mt-8 space-y-3">
-						{rec.options.map((o) => {
-							const on = shown && o.size === shown.size && o.mode === shown.mode;
-							const pass = tab === "need" ? o.ok : true;
+						{options.map((o) => {
+							const on = o.size === size && o.mode === mode;
 							return (
 								<div key={`${o.size}${o.mode}`} className="grid grid-cols-[6.5rem_minmax(0,1fr)_6.5rem] md:grid-cols-[11rem_minmax(0,1fr)_8rem] items-center gap-3">
-									<div className={`text-sm md:text-base font-bold ${pass ? "" : "text-gray-400"}`}>
+									<div className="text-sm md:text-base font-bold">
 										{o.size}&quot; <span className="font-normal">{MODE_LABEL[o.mode]}</span>
 									</div>
 									<div className="relative h-8 bg-gray-100">
-										<div className={`absolute inset-y-0 left-0 transition-[width] duration-500 ${on ? "bg-fr-red" : pass ? "bg-ink" : "bg-gray-300"}`}
+										<div className={`absolute inset-y-0 left-0 transition-[width] duration-500 ${on ? "bg-fr-red" : "bg-ink"}`}
 											style={{ width: `${(o.Q / maxQ) * 100}%` }} />
-										{tab === "need" && (
-											<div className="absolute -inset-y-1 w-[2px] bg-fr-red" style={{ left: `${Math.min(100, (rec.required / maxQ) * 100)}%` }} />
-										)}
 									</div>
-									<div className={`text-right tabular-nums whitespace-nowrap ${pass ? "" : "text-gray-400"}`}>
-										<span className="block font-bold">{fmtTime(o.minutes)}</span>
+									<div className="text-right tabular-nums whitespace-nowrap">
+										<span className="block font-bold">{valid ? fmtTime(o.minutes) : "—"}</span>
 										<span className="block text-xs text-gray-600">{fmtNum(o.Q)} m³/h</span>
 									</div>
 								</div>
@@ -412,8 +345,7 @@ export default function CalculadoraVentilacion() {
 						<div className="bg-white p-5 mt-5 leading-loose tabular-nums">
 							Volumen = largo × ancho × alto<br />
 							Renovaciones por hora = caudal (m³/h) ÷ volumen (m³)<br />
-							Tiempo = {TARGET_CHANGES} renovaciones ÷ renovaciones por minuto<br />
-							Caudal necesario = {TARGET_CHANGES} × volumen × 60 ÷ minutos
+							Tiempo = {TARGET_CHANGES} renovaciones ÷ renovaciones por minuto
 						</div>
 						<p className="text-[#333] mt-5 leading-relaxed">
 							Se considera generalmente aceptado que se requieren {TARGET_CHANGES} renovaciones para cambiar por completo
@@ -452,9 +384,9 @@ export default function CalculadoraVentilacion() {
 			<div className={`md:hidden fixed inset-x-0 bottom-0 z-30 bg-ink text-bone border-t-2 border-fr-red px-4 py-3 flex items-center justify-between gap-3 transition-transform duration-300 ${dock ? "translate-y-0" : "translate-y-full"}`}>
 				<div className="min-w-0">
 					<span className="block text-xs text-bone/70 truncate">
-						{tab === "need" ? (rec.best ? fanLabel(rec.best.size, rec.best.mode) : "Ningún V-MAX lo logra solo") : fanLabel(size, mode)}
+						{fanLabel(size, mode)}
 					</span>
-					<span className="block text-xl font-bold tabular-nums whitespace-nowrap">{r ? fmtTime(r.minutes) : `${fmtNum(rec.required)} m³/h`}</span>
+					<span className="block text-xl font-bold tabular-nums whitespace-nowrap">{r ? fmtTime(r.minutes) : "—"}</span>
 				</div>
 				<CTAButton variant="light" onClick={() => setIsModalOpen(true)} className="px-4">CONTÁCTANOS</CTAButton>
 			</div>
