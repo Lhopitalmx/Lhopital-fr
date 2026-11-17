@@ -227,8 +227,7 @@ export default function CalculadoraVentilacion() {
 						<div>
 							<h1 className="text-4xl md:text-6xl font-bold">¿Qué ventilador necesito?</h1>
 							<p className="text-lg md:text-xl font-light text-bone/70 max-w-2xl mt-4">
-								Captura las medidas del espacio y descubre qué ventilador SUPERVAC® V-MAX de presión positiva
-								renueva todo su aire en el tiempo que buscas.
+								Captura las medidas del espacio y descubre qué ventilador SUPERVAC® V-MAX necesitas.
 							</p>
 						</div>
 						<div className="flex items-center gap-4 shrink-0">
@@ -291,7 +290,7 @@ export default function CalculadoraVentilacion() {
 											</button>
 										))}
 									</div>
-									<p className="text-sm text-bone/60 mt-3">Tiempo para lograr {TARGET_CHANGES} renovaciones completas de aire.</p>
+									<p className="text-sm text-bone/60 mt-3">Tiempo para cambiar la atmósfera del espacio.</p>
 								</div>
 							) : (
 								<div className="grid sm:grid-cols-2 gap-6">
@@ -324,7 +323,7 @@ export default function CalculadoraVentilacion() {
 									<p className="text-sm tracking-[0.2em] uppercase text-bone/60 font-bold">Te recomendamos</p>
 									<p className="text-5xl md:text-7xl font-bold leading-none mt-2">V-MAX {rec.best.size}&quot;</p>
 									<p className="text-lg text-bone/80 mt-3">
-										en modo {MODE_LABEL[rec.best.mode].toLowerCase()}: hace {TARGET_CHANGES} renovaciones en{" "}
+										en modo {MODE_LABEL[rec.best.mode].toLowerCase()}: cambia la atmósfera en{" "}
 										<strong className="text-bone">{fmtTime(r.minutes)}</strong>.
 									</p>
 								</>
@@ -340,7 +339,7 @@ export default function CalculadoraVentilacion() {
 							) : r ? (
 								<>
 									<p className="text-6xl md:text-8xl font-bold leading-none"><BigTime min={r.minutes} /></p>
-									<p className="text-lg text-bone/80 mt-3">para lograr {TARGET_CHANGES} renovaciones completas de aire con el {fanLabel(size, mode)}.</p>
+									<p className="text-lg text-bone/80 mt-3">para cambiar la atmósfera con el {fanLabel(size, mode)}.</p>
 								</>
 							) : null}
 
@@ -372,8 +371,8 @@ export default function CalculadoraVentilacion() {
 					<h2 className="text-3xl md:text-5xl font-bold">Los V-MAX en tu espacio</h2>
 					<p className="text-lg font-light text-[#333] mt-3 max-w-3xl">
 						{tab === "need"
-							? `La línea roja marca el caudal que necesitas para ${TARGET_CHANGES} renovaciones en ${fmtNum(target, target % 1 ? 1 : 0)} min. Los modelos que la pasan lo logran.`
-							: `Caudal de cada modelo y tiempo para ${TARGET_CHANGES} renovaciones en el espacio que capturaste.`}
+							? `La línea roja marca el caudal que necesitas para cambiar la atmósfera en ${fmtNum(target, target % 1 ? 1 : 0)} min. Los modelos que la pasan lo logran.`
+							: `Caudal de cada modelo y tiempo para cambiar la atmósfera del espacio que capturaste.`}
 					</p>
 					<div className="mt-8 space-y-3">
 						{rec.options.map((o) => {
