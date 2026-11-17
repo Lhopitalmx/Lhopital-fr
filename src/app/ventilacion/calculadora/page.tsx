@@ -226,8 +226,9 @@ export default function CalculadoraVentilacion() {
 					<div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6">
 						<div>
 							<h1 className="text-4xl md:text-6xl font-bold">¿Qué ventilador necesito?</h1>
-							<p className="text-lg md:text-xl font-light text-bone/70 max-w-2xl mt-4">
-								Captura las medidas del espacio y descubre qué ventilador SUPERVAC® V-MAX necesitas.
+							<p className="text-lg md:text-xl font-light text-bone/70 mt-4 xl:whitespace-nowrap">
+								Captura las medidas del espacio y descubre qué ventilador{" "}
+								<span className="whitespace-nowrap">SUPERVAC® V-MAX</span> necesitas.
 							</p>
 						</div>
 						<div className="flex items-center gap-4 shrink-0">
@@ -372,7 +373,7 @@ export default function CalculadoraVentilacion() {
 					<p className="text-lg font-light text-[#333] mt-3 max-w-3xl">
 						{tab === "need"
 							? `La línea roja marca el caudal que necesitas para ${TARGET_CHANGES} renovaciones en ${fmtNum(target, target % 1 ? 1 : 0)} min. Los modelos que la pasan lo logran.`
-							: `Caudal de cada modelo y tiempo para ${TARGET_CHANGES} renovaciones en el espacio que capturaste.`}
+							: `Caudal de cada modelo y tiempo para renovar la atmósfera en el espacio que capturaste.`}
 					</p>
 					<div className="mt-8 space-y-3">
 						{rec.options.map((o) => {
