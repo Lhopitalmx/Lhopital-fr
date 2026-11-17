@@ -7,6 +7,10 @@ type HeroContainerProps = {
 	imageSrc?: string;
 	// Qué parte de la foto se conserva al recortarla (clase de Tailwind, p. ej. "object-top").
 	imagePosition?: string;
+	// Clases extra para la columna de texto (p. ej. bajarla para librar el menú Soluciones).
+	contentClassName?: string;
+	// Clases extra para la sección (p. ej. dejar que crezca en pantallas bajas).
+	sectionClassName?: string;
 	children?: ReactNode;
 };
 
@@ -14,10 +18,12 @@ export default function HeroContainer({
 	title,
 	imageSrc,
 	imagePosition = "object-center",
+	contentClassName = "",
+	sectionClassName = "",
 	children,
 }: HeroContainerProps) {
 	return (
-		<section className="relative w-full h-screen bg-[#272828] overflow-hidden flex items-center justify-center px-8 md:px-20">
+		<section className={`relative w-full h-screen bg-[#272828] overflow-hidden flex items-center justify-center px-8 md:px-20 ${sectionClassName}`}>
 			{/* Background image */}
 			{imageSrc && (
 				<div className="absolute inset-0 z-0">
@@ -39,7 +45,7 @@ export default function HeroContainer({
 				<div className="w-full md:w-1/2 h-full flex items-center justify-start" />
 
 				{/* Right-side content */}
-				<div className="w-full md:w-1/2 h-full flex flex-col justify-center text-left text-white">
+				<div className={`w-full md:w-1/2 h-full flex flex-col justify-center text-left text-white ${contentClassName}`}>
 					<h1 className="text-4xl md:text-6xl font-bold mb-4">{title}</h1>
 					<div className="text-lg md:text-2xl font-light max-w-xl">
 						{children}
