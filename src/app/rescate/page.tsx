@@ -15,7 +15,6 @@ const brandLogos = [
         name: "Res-Q-Jack",
         src: cld("2021_RQJ_Logo-with_tag-light_BG", "e_trim/c_limit,w_600"),
         invert: true,
-		size: "h-16 md:h-20 w-52 md:w-60",
     },
     {
         name: "Trelleborg",
@@ -52,13 +51,10 @@ export default function Rescue() {
 					rescate en estructuras colapsadas (USAR) y recuperación de vehículos
 					pesados y comerciales.
 				</p>
-                {/* Marcas distribuidas */}
-                <div className="grid grid-cols-2 gap-x-10 gap-y-6 mt-8 max-w-md items-center">
+                {/* Marcas distribuidas: las tres en una línea, mismo tamaño que en Protección personal */}
+                <div className="flex items-center gap-6 md:gap-8 mt-8 flex-wrap">
                     {brandLogos.map((brand) => (
-                        <div
-                            key={brand.name}
-                            className={`relative last:col-span-2 last:justify-self-center ${brand.size ?? "h-14 md:h-16 w-40 md:w-44"}`}
-                        >
+                        <div key={brand.name} className="relative h-12 md:h-14 w-32 md:w-36">
                             <Image
                                 src={brand.src}
                                 alt={brand.name}
