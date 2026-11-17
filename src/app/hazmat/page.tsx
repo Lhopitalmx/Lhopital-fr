@@ -28,7 +28,14 @@ export default function Hazmat() {
 
 	return (
 		<>
-			<HeroContainer title="HazMat" imageSrc={cld("hazmat_hero", "c_limit,w_2400")}>
+			<HeroContainer
+				title="HazMat"
+				imageSrc={cld("hazmat_hero", "c_limit,w_2400")}
+				// Igual que Rescate: en pantallas altas sigue centrado; en las bajas el título no sube
+				// más que el menú Soluciones abierto (pt-60) y la sección crece.
+				sectionClassName="md:h-auto md:min-h-screen"
+				contentClassName="md:h-auto md:pt-60 md:pb-60"
+			>
 				<p className="text-lg md:text-2xl font-light max-w-xl">
 					Diseñados específicamente para contención, recuperación y control de
 					materiales peligrosos, descontaminación, derrames químicos y
