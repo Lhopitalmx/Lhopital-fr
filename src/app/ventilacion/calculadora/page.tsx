@@ -236,9 +236,10 @@ export default function CalculadoraVentilacion() {
 						</div>
 					</div>
 
-					<div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mt-10 items-start">
+					{/* Mobile: result headline → inputs → stats. Desktop: inputs left, headline + stats right. */}
+					<div className="grid lg:grid-cols-2 lg:grid-rows-[auto_1fr] gap-10 lg:gap-x-16 lg:gap-y-8 mt-10 items-start">
 						{/* Controls */}
-						<div className="order-2 lg:order-1 space-y-8">
+						<div className="lg:col-start-1 lg:row-start-1 lg:row-span-2 space-y-8">
 							<div>
 								<h2 className="text-xs font-bold tracking-[0.2em] uppercase mb-4">Medidas del espacio</h2>
 								<div className="space-y-3">
@@ -278,8 +279,8 @@ export default function CalculadoraVentilacion() {
 								</div>
 						</div>
 
-						{/* Result + picture */}
-						<div className="order-1 lg:order-2" ref={resultRef} aria-live="polite">
+						{/* Result headline */}
+						<div className="order-first lg:col-start-2 lg:row-start-1" ref={resultRef} aria-live="polite">
 							{r ? (
 								<>
 									<p className="text-sm tracking-[0.2em] uppercase text-bone/60 font-bold">V-MAX {size}&quot;</p>
@@ -297,8 +298,11 @@ export default function CalculadoraVentilacion() {
 									</p>
 								</>
 							)}
+						</div>
 
-							<dl className="grid grid-cols-2 gap-px bg-bone/15 border border-bone/15 mt-8">
+						{/* Stats + picture */}
+						<div className="lg:col-start-2 lg:row-start-2">
+							<dl className="grid grid-cols-2 gap-px bg-bone/15 border border-bone/15">
 								{[
 									[valid ? `${fmtNum(V, V < 100 ? 1 : 0)} m³` : "—", "Volumen del espacio"],
 									[`${fmtNum(FANS[size][mode].cmh)} m³/h`, "Caudal del ventilador"],
