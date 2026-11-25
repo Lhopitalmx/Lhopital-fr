@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { cld, CLD } from "@/lib/cloudinary";
+import { EVENTO_ABRIR_BANNER } from "@/lib/consent";
 
 // Mismo acomodo que el footer de Lhopital-moto: logo | contacto | redes,
 // y abajo una franja con el copyright y los enlaces legales.
@@ -135,6 +136,13 @@ const Footer = () => {
 						>
 							Términos y condiciones
 						</Link>
+						<button
+							type="button"
+							onClick={() => window.dispatchEvent(new Event(EVENTO_ABRIR_BANNER))}
+							className="uppercase tracking-[0.15em] hover:text-white hover:underline"
+						>
+							Cookies
+						</button>
 					</nav>
 				</div>
 			</div>

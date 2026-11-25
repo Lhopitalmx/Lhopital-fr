@@ -1,6 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextResponse, after } from "next/server";
+import { cookies, headers } from "next/headers";
+import { randomUUID } from "node:crypto";
 import { Resend } from "resend";
 import { ContactEmail } from "@/components/ContactEmail";
+import { contextoDesde, enviarEventoCapi } from "@/lib/meta/capi";
 
 const submissions: Record<string, number> = {};
 
@@ -65,9 +68,24 @@ export async function POST(req: Request) {
 
 		submissions[ip] = now;
 
+		// Meta Lead (Conversions API) después de responder; nunca afecta el
+		// envío. Solo con consentimiento; correo, teléfono y nombre van con hash.
+		const metaEventId = `lead-${randomUUID()}`;
+		const contextoMeta = contextoDesde(await cookies(), await headers());
+		after(() =>
+			enviarEventoCapi({
+				nombre: "Lead",
+				eventId: metaEventId,
+				contexto: contextoMeta,
+				customData: { content_name: "Formulario de contacto" },
+				persona: { email, telefono: phone, nombre: name },
+			})
+		);
+
 		return NextResponse.json({
 			success: true,
 			message: "Mensaje enviado correctamente.",
+			metaEventId,
 		});
 	} catch (error: unknown) {
 		console.error("Error inesperado:", error);
