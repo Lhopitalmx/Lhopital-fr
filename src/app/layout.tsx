@@ -2,7 +2,8 @@ import "../styles/globals.css";
 import { ReactNode } from "react";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import Script from "next/script";
+import Medicion from "@/components/Medicion";
+import CookieBanner from "@/components/CookieBanner";
 import { LocalBusinessSchema } from "@/components/SEO";
 import { Metadata } from "next";
 
@@ -42,37 +43,14 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
 	return (
 		<html lang="es" suppressHydrationWarning>
-			<head>
-				{/* Google Analytics */}
-				<Script
-					src="https://www.googletagmanager.com/gtag/js?id=G-5E4DH68V8F"
-					strategy="afterInteractive"
-				/>
-				<Script id="gtag-init" strategy="afterInteractive">
-					{`
-						window.dataLayer = window.dataLayer || [];
-						function gtag(){dataLayer.push(arguments);}
-						gtag('js', new Date());
-						gtag('config', 'G-5E4DH68V8F');
-					`}
-				</Script>
-
-				{/* Microsoft Clarity */}
-				<Script id="clarity-init" strategy="afterInteractive">
-					{`
-						(function(c,l,a,r,i,t,y){
-							c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-							t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-							y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-						})(window, document, "clarity", "script", "sef1eizc17");
-					`}
-				</Script>
-			</head>
 			<body className="flex flex-col bg-white font-[almaq] text-white">
 				<LocalBusinessSchema />
 				<Header />
 				<main className="min-h-screen flex-1">{children}</main>
 				<Footer />
+				{/* Google Analytics, Microsoft Clarity y Meta Pixel: solo con consentimiento */}
+				<Medicion />
+				<CookieBanner />
 			</body>
 		</html>
 	);
