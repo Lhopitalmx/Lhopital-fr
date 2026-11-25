@@ -2,6 +2,8 @@
 
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { track } from "@/lib/meta/pixel";
+import { gaEvento } from "@/lib/analytics/ga";
 
 type FormInputs = {
 	name: string;
@@ -72,6 +74,12 @@ export default function ContactoForm() {
 		if (res.ok) {
 			setStatus("success");
 			reset();
+			// Lead en el Pixel con el mismo event_id que mandó el servidor, y
+			// generate_lead en Google Analytics. Sin consentimiento no hacen nada.
+			if (typeof result.metaEventId === "string") {
+				track("Lead", { content_name: "Formulario de contacto" }, result.metaEventId);
+			}
+			gaEvento("generate_lead", { form_name: "contacto", page_path: window.location.pathname });
 		} else {
 			setStatus("error");
 			setError(result.message || "Error al enviar el mensaje.");
